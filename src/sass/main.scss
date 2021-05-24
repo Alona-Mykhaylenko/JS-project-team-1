@@ -1,7 +1,11 @@
-/*
- * Главный файл стилей.
- * Все паршалы подключаются сюда.
- */
+@import './base/_common.sass';
+@import './base/_container.sass';
+@import './base/_variables.sass';
 
-// Стили для файла с примером HTML-фрагмента
-@import './example';
+@import './layouts/_header.sass';
+@import './layouts/_weather-one-day.sass';
+@import './layouts/_weather-five-days.sass';
+@import './layouts/_date.sass';
+@import './layouts/_quote.sass';
+@import './layouts/';
+@import './layouts/_chart.sass';
