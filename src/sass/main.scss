@@ -1,11 +1,11 @@
-@import './base/_common.sass';
-@import './base/_container.sass';
-@import './base/_variables.sass';
+@import './base/_common.scss';
+@import './base/_container.scss';
+@import './base/_variables.scss';
 
-@import './layouts/_header.sass';
-@import './layouts/_weather-one-day.sass';
-@import './layouts/_weather-five-days.sass';
-@import './layouts/_date.sass';
-@import './layouts/_quote.sass';
-@import './layouts/';
-@import './layouts/_chart.sass';
+@import './layouts/_header.scss';
+@import './layouts/_weather-one-day.scss';
+@import './layouts/_weather-five-days.scss';
+@import './layouts/_date.scss';
+@import './layouts/more-info.scss';
+@import './layouts/_quote.scss';
+@import './layouts/_chart.scss';
