@@ -21,4 +21,4 @@ function renderOneDayMarkup() {
     })
 }
 
-renderOneDayMarkup();
+export { renderOneDayMarkup };
