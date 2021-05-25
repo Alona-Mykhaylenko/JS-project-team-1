@@ -1,10 +1,15 @@
 import { fetchWeatherDataOneDay, setLocation } from './api-service'
 import weatherOneDay from '../templates/weather-one-day.hbs'
 
-const today__wether = document.querySelector('.today__wether');
+const todayWetherRef = document.querySelector('.today__wether');
+const currentCityRef = document.querySelector('.today__wether-text');
+const firstTitleCurrentCityRef = document.querySelector('.five-days__title');
+const secondTitleCurrentCityRef = document.querySelector('.five-days__weather-week-title');
+
+
 
 function renderOneDayMarkup() {
-    fetchWeatherDataOneDay().then(data => {
+    return fetchWeatherDataOneDay().then(data => {
         const allWeatherParam = {temp: Math.round(data.main.temp),
             tempmin: Math.round(data.main.temp_min),
             tempmax: Math.round(data.main.temp_max),
@@ -15,10 +20,15 @@ function renderOneDayMarkup() {
             sunrise: data.sys.sunrise,
             sunset: data.sys.sunset
         };
-        today__wether.innerHTML = weatherOneDay(allWeatherParam)
+        todayWetherRef.innerHTML = weatherOneDay(allWeatherParam);
+        firstTitleCurrentCityRef.textContent = `${allWeatherParam.name}, ${allWeatherParam.syscountry}`;
+        secondTitleCurrentCityRef.textContent = `${allWeatherParam.name}, ${allWeatherParam.syscountry}`;
+        return allWeatherParam;
     }).catch(error => {
-        console.log(weatherOneDay(error))
+        console.log(error)
     })
 }
+
+renderOneDayMarkup();
 
 export { renderOneDayMarkup };
