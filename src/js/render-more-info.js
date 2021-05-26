@@ -1,5 +1,5 @@
 import moreInfoTpl from '../templates/more-info.hbs';
-import weatherFiveDaysTpl from '../templates/weather-five-days.hbs';
+
 import { fetchWeatherDataFiveDays } from './api-service.js';
 
 const fiveDaysHourListRef = document.querySelector('.five-days__hour-list');
@@ -23,6 +23,8 @@ const getHourlyData = event => {
   });
 };
 
+getHourlyData();
+
 // .reduce((dayHours, item) =>
 // if (item.dt = event.target.dataset.date) {
 //     dayHours.push(item)}, []);
@@ -42,6 +44,7 @@ const getHourlyData = event => {
 // Открытие или закрытие секции по нажатию на кнопку
 // moreInfoBtnRef.addEventListener('click', isMoreInfoOpen);
 
+// Раскомментить
 moreInfoBtnRef.addEventListener('click', getHourlyData);
 
 function renderHourlyData(chosenHourlyData) {
