@@ -1,8 +1,10 @@
 import './sass/main.scss';
+import './js/api-service';
 import './js/favorite-cities';
-import './js/localeStorage';
+import './js/refs';
+import './js/render-chart';
 import './js/render-date';
-import "./js/render-five-day-forecast";
+import './js/render-five-day-forecast';
+import './js/render-more-info';
 import './js/render-one-day-forecast';
-
-
+import './js/localeStorage';

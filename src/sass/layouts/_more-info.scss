@@ -1,0 +1,144 @@
+.five-days__weather-hour {
+  background-color: $box-background-color;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 120px;
+  //   box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
+  border-radius: 34px;
+
+  position: relative;
+
+  padding-top: 15px;
+  padding-bottom: 18px;
+}
+
+.five-days__weather-hour-list {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.five-days__weather-details {
+  display: flex;
+  justify-content: center;
+}
+
+.five-days__central-image {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-font {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21;
+  color: $primary-text-color;
+  opacity: 0.54;
+  display: block;
+}
+
+.temp-text-font {
+  color: $accent-text-color;
+  font-size: 18px;
+}
+
+.five-days__text-barometer::before {
+  content: '';
+  //   fill: $accent-color;
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+
+  background-image: url('../images/barometer.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: absolute;
+  top: 60%;
+  left: 10%;
+}
+
+.five-days__text-humidity::before {
+  content: '';
+  //   fill: $accent-color;
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+
+  background-image: url('../images/humidity.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: absolute;
+  top: 72%;
+  left: 10%;
+}
+
+.five-days__text-wind::before {
+  content: '';
+  //   fill: $accent-color;
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+
+  background-image: url('../images/wind.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: absolute;
+  top: 83%;
+  left: 10%;
+}
+
+.five-days__info-list {
+  margin-left: 40px;
+}
+
+.info-list__list-item:not(:last-child) {
+  margin-bottom: 7px;
+}
+
+.five-days__list-item {
+  margin-bottom: 12px;
+}
+
+.five-days__hour-list {
+  display: flex;
+  overflow-x: auto;
+
+  height: 230px;
+}
+
+.five-days__hour-list-card:not(:last-child) {
+  margin-right: 10px;
+}
+
+.five-days__hour-list::-webkit-scrollbar {
+  height: 3px;
+  background: $secondary-text-color;
+  opacity: 0.9;
+  border-radius: 30px;
+}
+
+.five-days__hour-list::-webkit-scrollbar-thumb {
+  background: $accent-text-color;
+}
+
+@media (min-width: 768px) {
+  .five-days__hour-list::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+    background: transparent;
+  }
+
+  .five-days__hour-list::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  .five-days__hour-list::-webkit-scrollbar-button {
+    background: red;
+    height: 10px;
+    width: 10px;
+  }
+}
