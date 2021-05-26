@@ -34,7 +34,7 @@ function renderOneDayMarkup() {
     })
 }
 
-renderOneDayMarkup();
+ renderOneDayMarkup();
 
 
 function timeConverter(UNIX_timestamp){
