@@ -50,7 +50,7 @@
 .five-days__weather-week-list {
   display: flex;
   justify-content: space-between;
-  height: 165px;
+  height: 140px;
   margin-bottom: 13px;
   list-style: none;
   overflow-x: auto;
@@ -79,7 +79,7 @@
   .five-days__weather-week-title {
     font-size: 12px;
     font-family: 'Lato';
-    text-align: center;
+    text-align: center !important;
     margin-bottom: 5px;
   }
 
@@ -279,7 +279,7 @@
   }
 }
 .five-days__weather-week-list {
-  height: 154px;
+  height: 140px;
 }
 
 .five-days__weather-week-item {
