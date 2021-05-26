@@ -6,7 +6,7 @@ let location = 'Kyiv';
 // Получить все данные за 1 день
 
 const fetchWeatherDataOneDay = () =>
-  fetch(`${MainURL}/weather?units=metric&q=${location}&appid=${apiKey}`).then(response => {
+  fetch(`${MainURL}weather?units=metric&q=${location}&appid=${apiKey}`).then(response => {
     if (response.ok) {
       return response.json();
     }
