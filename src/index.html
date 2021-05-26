@@ -23,16 +23,43 @@
         <div class="container-one-day">
           <section class="search-city">
             <form class="search-city__form">
-              <input
-                type="text"
-                name="query"
-                placeholder="Enter the city"
-                class="search-city__input"
-              />
-              <button type="button" class="search-city__btn-save">Save</button>
+              <label class="search-city__field">
+                <span class="search-city-input-wrapper">
+                  <svg width="22" height="22" class="search-city__svg-location">
+                    <use href="./images/svg/sprite.svg#location"></use>
+                  </svg>
+
+                  <input
+                    type="text"
+                    name="query"
+                    class="search-city__input"
+                    placeholder="Enter the city"
+                  />
+
+                  <button type="button" class="search-city__btn-save">
+                    <svg width="22" height="22" class="search-city__svg">
+                      <use href="./images/svg/sprite.svg#star_empty"></use>
+                    </svg>
+                  </button>
+                </span>
+              </label>
             </form>
-            <div class="search-city__favorites">
-              <ul class="search-city__favorites-list"></ul>
+            <div class="search-city__slider">
+              <button class="search-city__slider-btnPrev">
+                <svg aria-hidden="true" viewBox="0 -3 32 32" width="20" height="20">
+                  <path
+                    d="M20.914 9.914l-2.829-2.829-8.914 8.914 8.914 8.914 2.828-2.828-6.086-6.086z"
+                  ></path>
+                </svg>
+              </button>
+              <ul class="search-city__slider-list"></ul>
+              <button class="search-city__slider-btnNext">
+                <svg width="20" height="20" aria-hidden="true" viewBox="0 -3 32 32">
+                  <path
+                    d="M11.086 22.086l2.829 2.829 8.914-8.914-8.914-8.914-2.828 2.828 6.086 6.086z"
+                  ></path>
+                </svg>
+              </button>
             </div>
           </section>
           <section class="today">
@@ -47,20 +74,7 @@
                 </li>
               </ul>
             </div>
-            <div class="today__date">
-              <div>
-                <p class="today__date-date"></p>
-                <p class="today__day-of-week"></p>
-              </div>
-              <div>
-                <p class="today__month"></p>
-                <p class="today__time"></p>
-              </div>
-              <div>
-                <p class="today__sunrise"></p>
-                <p class="today__sunset"></p>
-              </div>
-            </div>
+            <div class="today__date"></div>
           </section>
           <div class="quote">
             <p class="quote__text">
@@ -86,193 +100,25 @@
           </div>
           <div class="five-days__weather">
             <div class="five-days__weather-week">
-              <h2 class="five-days__weather-week-title">Kyiv, UA</h2>
+              <h2 class="five-days__weather-week-title-city">Kyiv, UA</h2>
               <ul class="five-days__weather-week-list"></ul>
-              слайдер1
+              <div class="five-days-containeer__scroll">
+                <img
+                  id="left-arrow"
+                  src="./images/icons/left-arrow.png"
+                  alt="left-arrow"
+                  class="five-days-containeer__arrow five-days-containeer__arrow--hover"
+                />
+                <img
+                  id="right-arrow"
+                  src="./images/icons/right-arrow.png"
+                  alt="right-arrow"
+                  class="five-days-containeer__arrow five-days-containeer__arrow--hover"
+                />
+              </div>
             </div>
-
-            <!-- More Info section STARTS -->
-            <ul class="five-days__hour-list">
-              <!-- card 1 -->
-              <li class="five-days__hour-list-card">
-                <div class="five-days__weather-hour">
-                  <ul class="five-days__weather-hour-list">
-                    <li class="five-days__list-item text-font">00:00</li>
-                    <li class="five-days__list-item">
-                      <img
-                        class="five-days__central-image"
-                        src="./images/001-cloudy.svg"
-                        width="35px"
-                        height="35px"
-                        alt=""
-                      />
-                    </li>
-                    <li class="five-days__list-item temp-text-font">-2°</li>
-                  </ul>
-                  <ul class="five-days__info-list">
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-barometer text-font">772 mm</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-humidity text-font">54%</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-wind text-font">3.7 m/s</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <!-- card 2 -->
-              <li class="five-days__hour-list-card">
-                <div class="five-days__weather-hour">
-                  <ul class="five-days__weather-hour-list">
-                    <li class="five-days__list-item text-font">00:00</li>
-                    <li class="five-days__list-item">
-                      <img
-                        class="five-days__central-image"
-                        src="./images/001-cloudy.svg"
-                        width="35px"
-                        height="35px"
-                        alt=""
-                      />
-                    </li>
-                    <li class="five-days__list-item temp-text-font">-2°</li>
-                  </ul>
-                  <ul class="five-days__info-list">
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-barometer text-font">772 mm</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-humidity text-font">54%</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-wind text-font">3.7 m/s</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <!-- card 3 -->
-              <li class="five-days__hour-list-card">
-                <div class="five-days__weather-hour">
-                  <ul class="five-days__weather-hour-list">
-                    <li class="five-days__list-item text-font">00:00</li>
-                    <li class="five-days__list-item">
-                      <img
-                        class="five-days__central-image"
-                        src="./images/001-cloudy.svg"
-                        width="35px"
-                        height="35px"
-                        alt=""
-                      />
-                    </li>
-                    <li class="five-days__list-item temp-text-font">-2°</li>
-                  </ul>
-                  <ul class="five-days__info-list">
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-barometer text-font">772 mm</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-humidity text-font">54%</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-wind text-font">3.7 m/s</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <!-- card 4 -->
-              <li class="five-days__hour-list-card">
-                <div class="five-days__weather-hour">
-                  <ul class="five-days__weather-hour-list">
-                    <li class="five-days__list-item text-font">00:00</li>
-                    <li class="five-days__list-item">
-                      <img
-                        class="five-days__central-image"
-                        src="./images/001-cloudy.svg"
-                        width="35px"
-                        height="35px"
-                        alt=""
-                      />
-                    </li>
-                    <li class="five-days__list-item temp-text-font">-2°</li>
-                  </ul>
-                  <ul class="five-days__info-list">
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-barometer text-font">772 mm</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-humidity text-font">54%</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-wind text-font">3.7 m/s</p>
-                    </li>
-                  </ul>
-                </div>
-                <!-- card 5 -->
-              <li class="five-days__hour-list-card">
-                <div class="five-days__weather-hour">
-                  <ul class="five-days__weather-hour-list">
-                    <li class="five-days__list-item text-font">00:00</li>
-                    <li class="five-days__list-item">
-                      <img
-                        class="five-days__central-image"
-                        src="./images/001-cloudy.svg"
-                        width="35px"
-                        height="35px"
-                        alt=""
-                      />
-                    </li>
-                    <li class="five-days__list-item temp-text-font">-2°</li>
-                  </ul>
-                  <ul class="five-days__info-list">
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-barometer text-font">772 mm</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-humidity text-font">54%</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-wind text-font">3.7 m/s</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <!-- card 6 -->
-              <li class="five-days__hour-list-card">
-                <div class="five-days__weather-hour">
-                  <ul class="five-days__weather-hour-list">
-                    <li class="five-days__list-item text-font">00:00</li>
-                    <li class="five-days__list-item">
-                      <img
-                        class="five-days__central-image"
-                        src="./images/001-cloudy.svg"
-                        width="35px"
-                        height="35px"
-                        alt=""
-                      />
-                    </li>
-                    <li class="five-days__list-item temp-text-font">-2°</li>
-                  </ul>
-                  <ul class="five-days__info-list">
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-barometer text-font">772 mm</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-humidity text-font">54%</p>
-                    </li>
-                    <li class="info-list__list-item">
-                      <p class="five-days__text-wind text-font">3.7 m/s</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              </li>
-            </ul>
-
-            <!-- More Info section ENDS -->
+            <ul class="five-days__hour-list"></ul>
           </div>
-
           <!--       chart           -->
           <div class="five-days__chart-show">
             <p class="five-days__chart-show-text">Show chart</p>
