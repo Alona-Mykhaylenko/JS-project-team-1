@@ -23,16 +23,43 @@
         <div class="container-one-day">
           <section class="search-city">
             <form class="search-city__form">
-              <input
-                type="text"
-                name="query"
-                placeholder="Enter the city"
-                class="search-city__input"
-              />
-              <button type="button" class="search-city__btn-save">Save</button>
+              <label class="search-city__field">
+                <span class="search-city-input-wrapper">
+                  <svg width="22" height="22" class="search-city__svg-location">
+                    <use href="./images/svg/sprite.svg#location"></use>
+                  </svg>
+
+                  <input
+                    type="text"
+                    name="query"
+                    class="search-city__input"
+                    placeholder="Enter the city"
+                  />
+
+                  <button type="button" class="search-city__btn-save">
+                    <svg width="22" height="22" class="search-city__svg">
+                      <use href="./images/svg/sprite.svg#star_empty"></use>
+                    </svg>
+                  </button>
+                </span>
+              </label>
             </form>
-            <div class="search-city__favorites">
-              <ul class="search-city__favorites-list"></ul>
+            <div class="search-city__slider">
+              <button class="search-city__slider-btnPrev">
+                <svg aria-hidden="true" viewBox="0 -3 32 32" width="20" height="20">
+                  <path
+                    d="M20.914 9.914l-2.829-2.829-8.914 8.914 8.914 8.914 2.828-2.828-6.086-6.086z"
+                  ></path>
+                </svg>
+              </button>
+              <ul class="search-city__slider-list"></ul>
+              <button class="search-city__slider-btnNext">
+                <svg width="20" height="20" aria-hidden="true" viewBox="0 -3 32 32">
+                  <path
+                    d="M11.086 22.086l2.829 2.829 8.914-8.914-8.914-8.914-2.828 2.828 6.086 6.086z"
+                  ></path>
+                </svg>
+              </button>
             </div>
           </section>
           <section class="today">
@@ -47,20 +74,7 @@
                 </li>
               </ul>
             </div>
-            <div class="today__date">
-              <div>
-                <p class="today__date-date"></p>
-                <p class="today__day-of-week"></p>
-              </div>
-              <div>
-                <p class="today__month"></p>
-                <p class="today__time"></p>
-              </div>
-              <div>
-                <p class="today__sunrise"></p>
-                <p class="today__sunset"></p>
-              </div>
-            </div>
+            <div class="today__date"></div>
           </section>
           <div class="quote">
             <p class="quote__text">

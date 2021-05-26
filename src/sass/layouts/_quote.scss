@@ -1,0 +1,40 @@
+.quote {
+  text-align: -webkit-right;
+}
+
+.quote__text {
+  width: 205px;
+  margin-bottom: 14px;
+  font-style: italic;
+  font-family: Lato;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+
+.quote__author {
+  font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  .quote {
+    padding-right: 20px;
+  }
+  .quote__text {
+    width: 375px;
+    margin-bottom: 30px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  .quote {
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+  .quote__text {
+    font-size: 22px;
+  }
+}
