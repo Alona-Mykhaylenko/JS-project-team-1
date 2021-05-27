@@ -121,24 +121,4 @@ new Chart(ctx, {
     maintainAspectRatio: false,
   },
 });
-// };
 
-// const average = (req, data) => {
-//   const values = data.map(e => e[req]);
-//   const sum = values.reduce((previous, current) => (current += previous));
-//   const avg = sum / values.length;
-//   return Number(avg.toFixed(1));
-// };
-// const getChartData = async () => {
-//   const data = await fetchWeatherDataFiveDays();
-//   chartData.days = [5, 6, 7, 2, 5];
-//   chartData.temp = [5, 6, 7, 2, 5];
-//   chartData.humidity = [5, 6, 7, 2, 5];
-//   chartData.pressure = [5, 6, 7, 2, 5];
-//   chartData.speed = [5, 6, 7, 2, 5];
-//   chartData.days = data.map(e => moment(e.date * 1000).format('ll'));
-//   chartData.temp = data.map(e => average('temp', e.forecast));
-//   chartData.humidity = data.map(e => average('humidity', e.forecast));
-//   chartData.pressure = data.map(e => average('pressure', e.forecast));
-//   chartData.speed = data.map(e => average('speed', e.forecast));
-// };
