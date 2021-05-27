@@ -28,6 +28,7 @@
   "dependencies": {
     "chart.js": "^3.3.0",
     "moment": "^2.29.1",
-    "moment-timezone": "^0.5.33"
+    "moment-timezone": "^0.5.33",
+    "siema": "^1.5.1"
   }
 }

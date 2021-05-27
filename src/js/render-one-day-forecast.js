@@ -1,14 +1,12 @@
-import { fetchWeatherDataOneDay, setLocation } from './api-service'
+import { fetchWeatherDataOneDay,fetchWeatherDataFiveDays, setLocation } from './api-service'
 import weatherOneDay from '../templates/weather-one-day.hbs'
 
 const todayWetherRef = document.querySelector('.today__wether');
 const firstTitleCurrentCityRef = document.querySelector('.five-days__title');
 const secondTitleCurrentCityRef = document.querySelector('.five-days__weather-week-title');
-const sunriseRef = document.querySelector('.date-sunrise-time');
-const sunsetRef = document.querySelector('.date-sunset-time');
 
 function pad(value) {
-    return String(value).padStart(5, '0');
+    return String(value).padStart(2, '0');
 };
 
 function renderOneDayMarkup() {
@@ -24,23 +22,29 @@ function renderOneDayMarkup() {
             sunset: data.sys.sunset
         };
         todayWetherRef.innerHTML = weatherOneDay(allWeatherParam);
-        addCurrentCityTitle(allWeatherParam.name, allWeatherParam.syscountry);
-        const sunrise = pad(timeConverter(allWeatherParam.sunrise));
-        const sunset = pad(timeConverter(allWeatherParam.sunset));
+        const sunrise = timeConverter(allWeatherParam.sunrise);
+        const sunset = timeConverter(allWeatherParam.sunset);
+        const sunriseRef = document.querySelector('.date-sunrise-time');
+        const sunsetRef = document.querySelector('.date-sunset-time');
+
+        function addSunriseSunset (sunUp, sunDown) {
+            sunriseRef.textContent = sunUp;
+            sunsetRef.textContent = sunDown;
+        }
+
         addSunriseSunset(sunrise, sunset);
+        addCurrentCityTitle(allWeatherParam.name, allWeatherParam.syscountry);
         return allWeatherParam;
     }).catch(error => {
         console.log(error)
     })
 }
-
  renderOneDayMarkup();
-
 
 function timeConverter(UNIX_timestamp){
     const a = new Date(UNIX_timestamp*1000);
-    const hour = a.getHours();
-    const min = a.getMinutes();
+    const hour = pad(a.getHours());
+    const min = pad(a.getMinutes());
     const time = hour + ':' + min ;
     return time;
 }
@@ -49,13 +53,6 @@ function addCurrentCityTitle ( name, CountryCode ) {
     firstTitleCurrentCityRef.textContent = `${name}, ${CountryCode}`;
     secondTitleCurrentCityRef.textContent = `${name}, ${CountryCode}`;
 }
-
-function addSunriseSunset (sunUp, sunDown) {
-    sunriseRef.textContent = sunUp;
-    sunsetRef.textContent = sunDown;
-}
-
-
 
 export { renderOneDayMarkup };
 
