@@ -99,7 +99,10 @@
 }
 
 .chart-wrapper {
-  height: 385px;
+  position: relative;
+  margin: auto;
+  // height: 80vh;
+  // width: 80vh;
   @media screen and (min-width: 768px) {
     height: 340px;
   }
@@ -108,7 +111,7 @@
   }
 }
 
-.show-chart-box.hidden {
+.hidden {
   display: none;
 }
 
