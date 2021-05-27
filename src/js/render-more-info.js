@@ -42,7 +42,7 @@ const getHourlyData = event => {
 // Открытие или закрытие секции по нажатию на кнопку
 // moreInfoBtnRef.addEventListener('click', isMoreInfoOpen);
 
-moreInfoBtnRef.addEventListener('click', getHourlyData);
+// moreInfoBtnRef.addEventListener('click', getHourlyData);
 
 function renderHourlyData(chosenHourlyData) {
   console.log(chosenHourlyData);
