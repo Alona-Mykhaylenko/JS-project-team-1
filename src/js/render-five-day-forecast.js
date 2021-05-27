@@ -1,5 +1,5 @@
 import fivedays from '../templates/weather-five-days.hbs';
-import { fetchWeatherDataFiveDays } from './api-service';
+import { fetchWeatherDataFiveDays } from './api-service'
 
 const ulRef = document.querySelector('.five-days__weather-week-list');
 
@@ -39,7 +39,6 @@ dataFiveDays();
 
 const weekDayNow = data => {
   const date = new Date(data * 1000);
-
   const weekDay = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
   return weekDay;
 };
