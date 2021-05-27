@@ -136,7 +136,7 @@ new Chart(ctx, {
 // function onHideChartClick() {
 //   chartBox.classList.remove('visible') & boxOfShowChart.classList.remove('hidden');
 // }
-_____________________________________________________________________________________________________________;
+// _____________________________________________________________________________________________________________;
 // let location = '';
 // let req = '';
 // let oneDayData = {};
