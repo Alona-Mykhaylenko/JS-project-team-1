@@ -121,4 +121,3 @@ new Chart(ctx, {
     maintainAspectRatio: false,
   },
 });
-

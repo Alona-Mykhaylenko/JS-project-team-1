@@ -60,10 +60,14 @@ function hideMoreInfo() {
 // Открытие или закрытие секции по нажатию на кнопку
 // moreInfoBtnRef.addEventListener('click', isMoreInfoOpen);
 
+
+// moreInfoBtnRef.addEventListener('click', getHourlyData);
+
 // function renderHourlyData(chosenHourlyData) {
 //   console.log(chosenHourlyData);
 //   fiveDaysHourListRef.innerHTML = moreInfoTpl(chosenHourlyData);
 // }
+
 
 function renderHourlyData(chosenHourlyData) {
   console.log(chosenHourlyData);
