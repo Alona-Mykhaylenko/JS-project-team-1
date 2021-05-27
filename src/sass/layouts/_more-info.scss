@@ -1,7 +1,7 @@
 .five-days__weather-hour {
   background-color: var(--box-background-color);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 120px;
+  width: 115px;
   //   box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
   border-radius: 34px;
 
@@ -11,14 +11,20 @@
   padding-bottom: 18px;
 }
 
+.five-days__box {
+  width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .five-days__weather-hour-list {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .five-days__weather-details {
   display: flex;
-  justify-content: center;
+  // justify-content: center;
 }
 
 .five-days__central-image {
@@ -100,17 +106,14 @@
   margin-bottom: 12px;
 }
 
-.five-days__hour-list {
-  display: flex;
-  overflow-x: auto;
-
-  height: 230px;
+.next {
+  display: block;
+  margin-left: auto;
 }
 
-.five-days__hour-list-card:not(:last-child) {
-  margin-right: 10px;
+.hide-button {
+  display: none;
 }
-
 .five-days__hour-list::-webkit-scrollbar {
   height: 3px;
   background: var(--secondary-text-color);
@@ -122,20 +125,38 @@
   background: var(--accent-text-color);
 }
 
+// .five-days__hour-list {
+//   display: flex;
+//   overflow-x: auto;
+
+//   height: 240px;
+// }
+
+
+// .five-days__hour-list-card:not(:last-child) {
+//   margin-right: 10px;
+// }
+
+// .five-days__hour-list::-webkit-scrollbar {
+//   height: 3px;
+//   background: var(--secondary-text-color);
+//   opacity: 0.9;
+//   border-radius: 30px;
+//   width: 30px;
+// }
+
+// .five-days__hour-list::-webkit-scrollbar-thumb {
+//   background: var(--accent-text-color);
+// }
+
 @media (min-width: 768px) {
-  .five-days__hour-list::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
-    background: transparent;
+  .five-days__box {
+    width: 580px;
   }
+}
 
-  .five-days__hour-list::-webkit-scrollbar-thumb {
-    background: transparent;
-  }
-
-  .five-days__hour-list::-webkit-scrollbar-button {
-    background: red;
-    height: 10px;
-    width: 10px;
+@media (min-width: 1280px) {
+  .five-days__box {
+    width: 900px;
   }
 }

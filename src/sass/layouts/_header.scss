@@ -27,7 +27,6 @@
 
 .search-city {
   padding-top: 30px;
-  padding-bottom: 45px;
   // &__form {
   //   position: relative;
   //   top: 50%;
@@ -104,7 +103,6 @@
   }
   .search-city {
     padding-top: 60px;
-    padding-bottom: 110px;
     &__input {
       width: 500px;
       height: 48px;
@@ -147,6 +145,8 @@
 .search-city {
   &__slider {
     display: flex;
+    align-items: center;
+    justify-content: center;
     &-list-content {
       display: flex;
     }
@@ -171,19 +171,19 @@
   &__slider-list-city {
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.21;
     align-items: center;
     text-decoration-line: underline;
+    margin-right: 10px;
   }
 
   &__slider-list-item {
     border-radius: 12px;
     background-color: #102136;
     opacity: 0.471;
-    padding: 5px 5px 5px 10px;
+    padding: 5px 10px 5px 10px;
     transition: opacity 0.2s linear;
-    width: 86px;
     cursor: pointer;
     &:hover {
       opacity: 1;
@@ -214,3 +214,52 @@
     }
   }
 }
+//===========================стили lockal storages======================================
+
+.search-city__slider-list {
+  display: flex;
+  width: 230px;
+  overflow-x: hidden;
+}
+
+.search-city__slider-list-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.search-city__slider-list-item {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .search-city__slider-list {
+    width: 440px;
+  }
+  }
+  
+@media (min-width: 1280px) {
+  .search-city__slider-list {
+    width: 450px;
+  }
+}
+
+.search-city__form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
