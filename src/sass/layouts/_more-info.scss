@@ -1,5 +1,5 @@
 .five-days__weather-hour {
-  // background-color: var(--box-background-color);
+  background-color: var(--box-background-color);
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 115px;
   //   box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
@@ -114,6 +114,16 @@
 .hide-button {
   display: none;
 }
+.five-days__hour-list::-webkit-scrollbar {
+  height: 3px;
+  background: var(--secondary-text-color);
+  opacity: 0.9;
+  border-radius: 30px;
+}
+
+.five-days__hour-list::-webkit-scrollbar-thumb {
+  background: var(--accent-text-color);
+}
 
 // .five-days__hour-list {
 //   display: flex;
@@ -121,6 +131,7 @@
 
 //   height: 240px;
 // }
+
 
 // .five-days__hour-list-card:not(:last-child) {
 //   margin-right: 10px;
