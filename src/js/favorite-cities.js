@@ -1,8 +1,10 @@
 import { setLocation } from './api-service';
-import { renderOneDayMarkup } from './render-one-day-forecast'
+import { renderOneDayMarkup } from './render-one-day-forecast';
 import { dataFiveDays } from './render-five-day-forecast';
+import { hideMoreInfo } from './render-more-info';
 
 const formInput = document.querySelector('.search-city__form');
+const fiveDaysHourListRef = document.querySelector('.five-days__hour-list');
 
 formInput.addEventListener('submit', getCities);
 
@@ -15,4 +17,5 @@ function getCities(e) {
   setLocation(normalizedLoc);
   renderOneDayMarkup();
   dataFiveDays();
+  hideMoreInfo();
 }
