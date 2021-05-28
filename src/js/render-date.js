@@ -3,6 +3,8 @@ import { fetchWeatherDataOneDay } from './api-service';
 import sansetImg from '../images/svg/sunset.svg';
 import sunriseImg from '../images/svg/sunrise.svg';
 const dateRef = document.querySelector('.today__date');
+const numberDateRef = document.querySelector('.date-day');
+const monthRef = document.querySelector('.date-month');
 
 // --------------------------------------
 const th = function (d) {
@@ -19,16 +21,8 @@ const th = function (d) {
   }
 };
 
-function renderDate() {
-  const date = new Date();
-
-  const weekDayNow = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(date);
-
-  const dayNow = date.getDate();
-
-  const MonthNow = new Intl.DateTimeFormat('en', { month: 'long' }).format(date);
-
-  let result = date.getHours() + ':' + date.getMinutes() + ':' + pad(date.getSeconds());
+function initRender() {
+const { weekDayNow, dayNow, MonthNow, result } = time();
 
   dateRef.innerHTML = dateToday({
     sansetImg,
@@ -40,11 +34,35 @@ function renderDate() {
     th: th(),
   });
 }
-renderDate();
+initRender();
+
+function renderDate() {
+  const currentTimeRef = document.querySelector('.date-time');
+  const numberDateRef = document.querySelector('.date-day');
+  const monthRef = document.querySelector('.date-month');
+
+    const { weekDayNow, dayNow, MonthNow, result } = time();
+  currentTimeRef.textContent = result;
+
+}
+
 
 setInterval(renderDate, 1000);
 
 function pad(value) {
   return String(value).padStart(2, '0');
 }
+function time() { 
+   const date = new Date();
+
+  const weekDayNow = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(date);
+
+  const dayNow = date.getDate();
+
+  const MonthNow = new Intl.DateTimeFormat('en', { month: 'long' }).format(date);
+
+  let result = pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
+  return { weekDayNow, dayNow, MonthNow, result };
+};
+
 //----------------------------------------------------

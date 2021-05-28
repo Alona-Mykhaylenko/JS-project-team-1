@@ -1,6 +1,7 @@
 import favCitiesHbs from '../templates/fav-cities.hbs';
-import {renderOneDayMarkup} from './render-one-day-forecast';
-import {setLocation} from './api-service';
+import favCityHbs from '../templates/fav-city.hbs';
+import { renderOneDayMarkup } from './render-one-day-forecast';
+import { setLocation } from './api-service';
 import Siema from 'siema';
 
 const inputRef = document.querySelector('.search-city__input');
@@ -10,6 +11,18 @@ const btnLeft = document.querySelector('.search-city__slider-btnPrev');
 const btnRight = document.querySelector('.search-city__slider-btnNext');
 
 //==========================================ДОБАВЛЕНИЕ В LOCAL STORAGE====================================
+
+let widthVivport = document.querySelector('body').offsetWidth;
+const mySiema = new Siema({
+  selector: ulRef,
+  perPage: {
+    768: 2,
+    1024: 3,
+  },
+});
+
+btnLeft.addEventListener('click', () => mySiema.prev());
+btnRight.addEventListener('click', () => mySiema.next());
 
 btnRef.addEventListener('click', addToLocalStorage);
 
@@ -23,7 +36,11 @@ function addToLocalStorage() {
 
   localStorage.setItem('City', JSON.stringify(storage.arrCities));
   inputRef.value = '';
-  createMarkup(getLocalStorage());
+  const li = document.createElement('li');
+  li.classList.add('search-city__slider-list-item');
+  li.innerHTML = favCityHbs(imputValue);
+  mySiema.append(li);
+  // createMarkup(getLocalStorage());
 }
 
 function getLocalStorage() {
@@ -42,16 +59,14 @@ function getLocalStorage() {
 function createMarkup(cities) {
   const markup = favCitiesHbs(cities);
 
-  ulRef.innerHTML =  markup;
+  ulRef.innerHTML = markup;
 }
-
-
 
 createMarkup(getLocalStorage());
 //===============================================КОПИРОВАНИЕ В РАЗМЕТКА И LOCAL STORAGE ===================================================================
 ulRef.addEventListener('click', addInputValueFromList);
 
-function addInputValueFromList (event) {
+function addInputValueFromList(event) {
   if (event.target.nodeName === 'BUTTON') {
     const nameLiCity = event.path[1].childNodes[1].textContent;
     const indexCurrentCity = storage.arrCities.indexOf(nameLiCity);
@@ -60,24 +75,8 @@ function addInputValueFromList (event) {
     localStorage.setItem('City', JSON.stringify(storage.arrCities));
     createMarkup(getLocalStorage());
   }
-  if (event.target.nodeName === 'P')
-  setLocation(event.path[1].childNodes[1].textContent);
+  if (event.target.nodeName === 'P') setLocation(event.path[1].childNodes[1].textContent);
   renderOneDayMarkup();
 }
 
-
 //========================================== ОТОБРАЖЕНИЕ КНОПОК ЛЕВО-ПРАВО + СКРОЛЛ============================================================
-
-
-  let widthVivport = document.querySelector('body').offsetWidth;
-  const mySiema = new Siema({
-    selector: ulRef,
-    perPage: {
-      768: 2,
-      1024: 3,
-    },
-  });
-
-  btnLeft.addEventListener('click', () => mySiema.prev());
-  btnRight.addEventListener('click', () => mySiema.next());  
-  

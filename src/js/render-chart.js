@@ -8,6 +8,8 @@ const ChartRef = document.querySelector('.chart-container');
 
 ChartRef.innerHTML = tempChart();
 
+const navChartRef = document.querySelector('.nav');
+
 const ctx = document.getElementById('myChart').getContext('2d');
 
 const headerOfShowChart = document.querySelector('.show-chart-header-js');
@@ -21,23 +23,32 @@ function a() {
 }
 
 navListRef.addEventListener('click', onShowChartClick);
+navChartRef.addEventListener('click', onHideChartClick);
 
 function onShowChartClick(e) {
-  if (e.target.tagName === 'LI' || e.target.tagName === 'BUTTON') {
-    ChartRef.classList.remove('hidden');
-    navListRef.classList.add('hidden');
-  }
+  
+ChartRef.classList.remove('hidden');
+navListRef.classList.add('hidden');
+ 
 }
-ChartRef.addEventListener('click', onHideChartClick);
 
 function onHideChartClick(e) {
-  if (e.target.tagName === 'LI' || e.target.tagName === 'BUTTON') {
-    ChartRef.classList.add('hidden');
-    navListRef.classList.remove('hidden');
-  }
+  
+ChartRef.classList.add('hidden');
+navListRef.classList.remove('hidden');
+  
 }
 
 let chartData = {};
+
+// const getChartData = () => {
+//   const data = api.dataProcessingMoreInfo();
+//   chartData.days = data.map(e => moment(e.date * 1000).format('ll'));
+//   chartData.temp = data.map(e => average('temp', e.forecast));
+//   chartData.humidity = data.map(e => average('humidity', e.forecast));
+//   chartData.pressure = data.map(e => average('pressure', e.forecast));
+//   chartData.speed = data.map(e => average('speed', e.forecast));
+// };
 
 new Chart(ctx, {
   type: 'line',
@@ -55,44 +66,30 @@ new Chart(ctx, {
         label: ' —  Humidity, %',
         backgroundColor: 'rgb(10, 6, 234)',
         borderColor: 'rgb(10, 6, 234)',
-        data: [5, 6, 7, 2, 5],
+        data: [7, 4, 8, 3, 1],
         fill: false,
       },
       {
         label: ' —  Wind Speed, m/s',
         backgroundColor: 'rgb(235, 155, 5)',
         borderColor: 'rgb(235, 155, 5)',
-        data: [5, 6, 7, 2, 5],
+        data: [1, 4, 9, 3, 5],
         fill: false,
       },
       {
         label: ' — Atmosphere Pressure, m/m',
         backgroundColor: 'rgb(5, 120, 6)',
         borderColor: 'rgb(5, 120, 6)',
-        data: [5, 6, 7, 2, 5],
+        data: [4, 3, 8, 3, 5],
         fill: false,
       },
     ],
   },
   options: {
     interaction: {
-      mode: 'point',
-      // title: {
-      //   display: true,
-      //   text: 'Value of indicators',
-      //   position: 'left',
-      // },
-      // legend: {
-      //   display: true,
-      //   align: 'start',
-
-      //   labels: {
-      //     boxWidth: 13,
-      //     boxHeight: 12,
-      //     defaultFontColor: 'rgb(5, 120, 6)',
-      //     padding: 10,
-      //   },
+      mode: 'point',    
     },
+    
     scales: {
       x: [
         {
@@ -104,18 +101,15 @@ new Chart(ctx, {
           },
         },
       ],
-      y: [
-        {
-          gridLines: {
-            color: 'rgba(255, 255, 255, 0.541)',
-            stepSize: 0.5,
-            zeroLineColor: 'rgba(255, 255, 255, 0.541)',
-          },
-          ticks: {
+      y: {      
+          grid: {
+          color: 'rgba(255, 255, 255, 0.541)',
+            
+            ticks: {
             padding: 18,
           },
         },
-      ],
+      },
     },
     responsive: true,
     maintainAspectRatio: false,

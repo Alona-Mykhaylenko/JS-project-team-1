@@ -71,6 +71,7 @@ function renderHourlyData(chosenHourlyData) {
   //   fiveDaysHourListRef.classList.remove('siema');
   //   moreInfoScroll.classList.add('hide-button');
   // }
+
 }
 
 function ConverterToDate(UNIX_timestamp) {
