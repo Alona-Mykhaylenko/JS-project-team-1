@@ -1,7 +1,9 @@
 import fivedays from '../templates/weather-five-days.hbs';
-import { fetchWeatherDataFiveDays } from './api-service'
+import { fetchWeatherDataFiveDays } from './api-service';
 
 const ulRef = document.querySelector('.five-days__weather-week-list');
+
+let newNewWeather = [];
 
 function dataFiveDays() {
   fetchWeatherDataFiveDays().then(data => {
@@ -10,25 +12,25 @@ function dataFiveDays() {
     const allDays = data.list;
     let weatherFiveDays = date5.map(data =>
       allDays.filter(obj => new Date(obj.dt * 1000).getDate() === data),
-      );
-      if (weatherFiveDays.length > 5) {
-        weatherFiveDays = weatherFiveDays.slice(1);
+    );
+    if (weatherFiveDays.length > 5) {
+      weatherFiveDays = weatherFiveDays.slice(1);
     }
-      const newNewWeather = weatherFiveDays.map(day => {
-        return {
-          moreInfo: day,
-          day: new Date(day[0].dt * 1000).getDate(),
-          week: weekDayNow(day[0].dt),
 
-          month: timeConverter(day[0].dt),
-          icon: `http://openweathermap.org/img/wn/${day[3].weather[0].icon}@2x.png`,
-          temp: mathTemp(day),
-          date: dayConv(day[0].dt),
+    newNewWeather = weatherFiveDays.map(day => {
+      return {
+        moreInfo: day,
+        day: new Date(day[0].dt * 1000).getDate(),
+        week: weekDayNow(day[0].dt),
 
-          // maxTemp:
-          // minTemp:
-        };
+        month: timeConverter(day[0].dt),
+        icon: `http://openweathermap.org/img/wn/${day[0].weather[0].icon}@2x.png`,
+        temp: mathTemp(day),
+        date: dayConv(day[0].dt),
 
+        // maxTemp:
+        // minTemp:
+      };
     });
     ulRef.innerHTML = fivedays(newNewWeather);
   });
@@ -86,8 +88,6 @@ const mathTemp = data => {
   return temp;
 };
 
-
-
 // dataProcessingFiveDays();
 // 1  map - номер дня
 // 2. оставляем уникальные дни
@@ -95,14 +95,14 @@ const mathTemp = data => {
 // 4. перебираем массив с 5 днями и оставляем массив масивов по днями
 // 5. из массива массивов выбрать 1 массив из 5 объектов. финальный
 
-
-
 // =========================================================================
 
-    // const newWeather = weatherFiveDays.flatMap(a => a);
-    // const newNewWeather = weatherFiveDays.map(day => {
-      // tempmin: Math.round(obj.main.temp_min),
-      // tempmax: Math.round(obj.main.temp_max),
-      // day: weekDayNow(obj.dt),
-      // icon: `http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png`,
-      // data: timeConverter(obj.dt),
+// const newWeather = weatherFiveDays.flatMap(a => a);
+// const newNewWeather = weatherFiveDays.map(day => {
+// tempmin: Math.round(obj.main.temp_min),
+// tempmax: Math.round(obj.main.temp_max),
+// day: weekDayNow(obj.dt),
+// icon: `http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png`,
+// data: timeConverter(obj.dt),
+
+export { newNewWeather };
