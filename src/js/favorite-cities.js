@@ -1,5 +1,6 @@
 import { setLocation } from './api-service';
 import { renderOneDayMarkup } from './render-one-day-forecast'
+import { dataFiveDays } from './render-five-day-forecast';
 
 const formInput = document.querySelector('.search-city__form');
 
@@ -13,4 +14,5 @@ function getCities(e) {
   if (!normalizedLoc) return;
   setLocation(normalizedLoc);
   renderOneDayMarkup();
+  dataFiveDays();
 }

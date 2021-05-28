@@ -3,6 +3,8 @@ import { fetchWeatherDataFiveDays } from './api-service'
 
 const ulRef = document.querySelector('.five-days__weather-week-list');
 
+let newNewWeather = [];
+
 function dataFiveDays() {
   fetchWeatherDataFiveDays().then(data => {
     const date2 = data.list.map(element => new Date(element.dt * 1000).getDate());
@@ -13,31 +15,35 @@ function dataFiveDays() {
       );
       if (weatherFiveDays.length > 5) {
         weatherFiveDays = weatherFiveDays.slice(1);
-    }
-      const newNewWeather = weatherFiveDays.map(day => {
+      }
+      
+      newNewWeather = weatherFiveDays.map(day => {
+        // console.log(humidity(day));
+        
         return {
           moreInfo: day,
-          day: new Date(day[0].dt * 1000).getDate(),
+          // day: new Date(day[0].dt * 1000).getDate(),
           week: weekDayNow(day[0].dt),
-
           month: timeConverter(day[0].dt),
-          icon: `http://openweathermap.org/img/wn/${day[3].weather[0].icon}@2x.png`,
+          icon: `http://openweathermap.org/img/wn/${day[0].weather[0].icon}@2x.png`,
           temp: mathTemp(day),
           date: dayConv(day[0].dt),
-
-          // maxTemp:
-          // minTemp:
+          wind: windTemp(day),
+          tempDay: everageTemp(day),
+          pressure: pressure(day),
+          humidity: humidity(day),
         };
-
+      });
+      ulRef.innerHTML = fivedays(newNewWeather);
+      console.log(newNewWeather);
     });
-    ulRef.innerHTML = fivedays(newNewWeather);
-  });
-}
-dataFiveDays();
-
-// =============день недели===================
-
-const weekDayNow = data => {
+  }
+  
+  dataFiveDays();
+  
+  // =============день недели===================
+  
+  const weekDayNow = data => {
   const date = new Date(data * 1000);
   const weekDay = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
   return weekDay;
@@ -71,38 +77,51 @@ const timeConverter = function (data) {
 const dayConv = function (data) {
   const a = new Date(data * 1000);
   const date = a.getDate();
-  console.log(date);
   return date;
 };
 
+// ============================================средняя температура min/max дня=======================
+
 const mathTemp = data => {
-  console.log(data);
   data = data.map(e => Math.floor(e.main.temp_min));
   const temp = {
     TempMin: Math.min(...data),
     TempMax: Math.max(...data),
   };
-  // console.log(data);
   return temp;
 };
 
+// ================================================скорость ветра==================================
 
+const windTemp = data => {
+  const wind = data.map(e => Math.floor(e.wind.speed)).reduce((a, b) => a + b, 0);
+  const resultWind = Math.floor(+wind / data.length);
+  return resultWind;
+};
 
-// dataProcessingFiveDays();
-// 1  map - номер дня
-// 2. оставляем уникальные дни
-// 3. если их 6 по if убираем 1
-// 4. перебираем массив с 5 днями и оставляем массив масивов по днями
-// 5. из массива массивов выбрать 1 массив из 5 объектов. финальный
+// ============================================средняя температура дня=======================
 
+const everageTemp = data => {
+  const temp = data.map(e => Math.floor(e.main.temp)).reduce((a, b) => a + b, 0);
+  const resulTemp = Math.floor(+temp / data.length);
+  return resulTemp;
+};
 
+// ============================================среднее давление дня=======================
 
-// =========================================================================
+const pressure = data => {
+  const press = data.map(e => Math.floor(e.main.pressure)).reduce((a, b) => a + b, 0);
+  const resulPress = Math.floor(+press / data.length);
+  return resulPress;
+};
 
-    // const newWeather = weatherFiveDays.flatMap(a => a);
-    // const newNewWeather = weatherFiveDays.map(day => {
-      // tempmin: Math.round(obj.main.temp_min),
-      // tempmax: Math.round(obj.main.temp_max),
-      // day: weekDayNow(obj.dt),
-      // icon: `http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png`,
-      // data: timeConverter(obj.dt),
+// ============================================средняя влажность дня=======================
+
+const humidity = data => {
+  const humid = data.map(e => Math.floor(e.main.humidity)).reduce((a, b) => a + b, 0);
+  const resulHumid = Math.floor(+humid / data.length);
+  return resulHumid;
+};
+
+export { dataFiveDays };
+export { newNewWeather };

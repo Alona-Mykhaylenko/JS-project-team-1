@@ -88,7 +88,7 @@ function renderHourlyData(chosenHourlyData) {
   if (window.innerWidth >= 768) {
     document.querySelector('.next').addEventListener('click', () => mySiema.next());
   } else {
-    iveDaysHourListRef.classList.remove('siema');
+    fiveDaysHourListRef.classList.remove('siema');
     // moreInfoScroll.classList.add('hide-button');
   }
 }
