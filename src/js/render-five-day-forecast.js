@@ -1,5 +1,5 @@
 import fivedays from '../templates/weather-five-days.hbs';
-import { fetchWeatherDataFiveDays } from './api-service'
+import { fetchWeatherDataFiveDays } from './api-service';
 
 const ulRef = document.querySelector('.five-days__weather-week-list');
 
@@ -125,3 +125,4 @@ const humidity = data => {
 
 export { dataFiveDays };
 export { newNewWeather };
+
