@@ -3,7 +3,7 @@ import weatherOneDay from '../templates/weather-one-day.hbs'
 
 const todayWetherRef = document.querySelector('.today__wether');
 const firstTitleCurrentCityRef = document.querySelector('.five-days__title');
-const secondTitleCurrentCityRef = document.querySelector('.five-days__weather-week-title');
+const secondTitleCurrentCityRef = document.querySelector('.five-days__weather-week-title-city');
 
 function pad(value) {
     return String(value).padStart(2, '0');
