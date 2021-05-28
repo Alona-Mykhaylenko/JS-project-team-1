@@ -1,4 +1,5 @@
 import { setLocation } from './api-service';
+
 import { renderOneDayMarkup } from './render-one-day-forecast';
 import { setLocationImg, setImgBg } from './geolocation';
 
