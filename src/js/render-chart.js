@@ -1,8 +1,8 @@
 import Chart from 'chart.js/auto';
-import refs from '../js/refs';
-import { fetchWeatherDataFiveDays } from './api-service';
 import tempChart from '../templates/chart.hbs';
-import { dataFiveDays } from './render-five-day-forecast';
+import { newNewWeather } from './render-five-day-forecast';
+
+const moment = require('moment-timezone');
 
 const navListRef = document.querySelector('.nav-list');
 const ChartRef = document.querySelector('.chart-container');
@@ -15,42 +15,19 @@ const ctx = document.getElementById('myChart').getContext('2d');
 
 const headerOfShowChart = document.querySelector('.show-chart-header-js');
 
-headerOfShowChart.addEventListener('click', a);
-
-function a() {
-  fetchWeatherDataFiveDays().then(data => {
-    console.log(data);
-  });
-}
-
 navListRef.addEventListener('click', onShowChartClick);
 navChartRef.addEventListener('click', onHideChartClick);
 
-function onShowChartClick(e) {
-  ChartRef.classList.remove('hidden');
-  navListRef.classList.add('hidden');
-}
+let chart = {};
 
-function onHideChartClick(e) {
-  ChartRef.classList.add('hidden');
-  navListRef.classList.remove('hidden');
-}
-
-// function setDataChart(chart, array) => {
-//   [...chart.data.datasets[0].data].forEach() => chart.data.datasets[0].data.pop());
-//   [...chart.data.labels].forEach(()=> chart.data.labels.pop());
-// }
-
-dataFiveDays().then(newNewWeather => {
-  console.log(newNewWeather);
-
-  const getChartData = newNewWeather.map(e => e.date);
+function renderChartUpdate() {
+  const getChartData = newNewWeather.map(e => e.date.month + ' ' + e.date.day + ', ' + e.date.year);
   const getChartTemp = newNewWeather.map(e => e.tempDay);
   const getChartHumidity = newNewWeather.map(e => e.humidity);
   const getChartPressure = newNewWeather.map(e => e.pressure);
   const getChartWind = newNewWeather.map(e => e.wind);
 
-  const chart = new Chart(ctx, {
+  chart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: getChartData,
@@ -89,11 +66,6 @@ dataFiveDays().then(newNewWeather => {
       interaction: {
         mode: 'point',
       },
-      // title: {
-      //   display: true,
-      //   text: 'Value of indicators',
-      //   position: 'left',
-      // },
       // legend: {
       //   display: true,
       //   align: 'start',
@@ -121,7 +93,7 @@ dataFiveDays().then(newNewWeather => {
           title: {
             display: true,
             text: 'Value of indicators',
-            color: '#191',
+            color: '#ffffff',
             font: {
               family: 'Times',
               size: 20,
@@ -137,21 +109,19 @@ dataFiveDays().then(newNewWeather => {
       maintainAspectRatio: false,
     },
   });
-});
+}
 
-// setDataChart: (chart, data) => {
-//   [...chart.data.datasets[0].data].forEach(() => chart.data.datasets[0].data.pop());
-//   [...chart.data.labels].forEach(() => chart.data.labels.pop());
+function onShowChartClick(e) {
+  ChartRef.classList.remove('hidden');
+  navListRef.classList.add('hidden');
+  renderChartUpdate();
+}
 
-//   Object.entries(data).forEach(([index, item]) => {
-//     chart.data.datasets[0].data.push(item);
-//     chart.data.labels.push(index);
-//   });
-
-//   chart.update({
-//     duration: 1000,
-//     easing: 'easeOutBounce',
-//   });
-// };
+function onHideChartClick(e) {
+  ChartRef.classList.add('hidden');
+  navListRef.classList.remove('hidden');
+  chart.destroy();
+}
 
 export { onHideChartClick };
+

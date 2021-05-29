@@ -26,6 +26,7 @@ function dataFiveDays() {
         // day: new Date(day[0].dt * 1000).getDate(),
         week: weekDayNow(day[0].dt),
         month: timeConverter(day[0].dt),
+        year: timeConverter2(day[0].dt),
         icon: `http://openweathermap.org/img/wn/${day[0].weather[0].icon}@2x.png`,
         temp: mathTemp(day),
         date: dayConv(day[0].dt),
@@ -35,6 +36,7 @@ function dataFiveDays() {
         humidity: humidity(day),
       };
     });
+    // console.log(newNewWeather);
     ulRef.innerHTML = fivedays(newNewWeather);
     return Promise.resolve(newNewWeather);
   });
@@ -71,6 +73,7 @@ const timeConverter = function (data) {
   const month = months[a.getMonth()];
   const date = a.getDate();
   const time = date + ' ' + month;
+  const year = a.getFullYear();
   return time;
 };
 
@@ -124,6 +127,30 @@ const humidity = data => {
   return resulHumid;
 };
 
+
+// =================== год ====================
+
+const timeConverter2 = function (data) {
+  const a = new Date(data * 1000);
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  const year = a.getFullYear();
+  return year;
+};
+
+// console.log(newNewWeather);
 export { dataFiveDays };
 export { newNewWeather };
 
