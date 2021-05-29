@@ -13,7 +13,7 @@ const navChartRef = document.querySelector('.nav');
 
 const ctx = document.getElementById('myChart').getContext('2d');
 
-// const headerOfShowChart = document.querySelector('.show-chart-header-js');
+const headerOfShowChart = document.querySelector('.show-chart-header-js');
 
 navListRef.addEventListener('click', onShowChartClick);
 navChartRef.addEventListener('click', onHideChartClick);

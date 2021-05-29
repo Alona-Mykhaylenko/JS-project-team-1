@@ -77,11 +77,10 @@ function showOrHide(event) {
     buttonNext.classList.add('show-button');
     buttonNext.addEventListener('click', scrollRight);
     buttonPrev.addEventListener('click', scrollLeft);
-
+    decolorizeWeekday(event);
     event.target.parentNode.firstElementChild.classList.add('five-days__weather-week-title-active');
-    // event.target.nextElementSibling.parentNode.classList.remove(
-    //   'five-days__weather-week-title-active',
-    // );
+    // colorizeMoreInfo(event);
+    // event.target.classList.add('white-color');
   }
 }
 
@@ -111,13 +110,18 @@ function scrollLeft() {
   buttonNext.classList.add('show-button');
 }
 
+function decolorizeWeekday(event) {
+  const allWeekdays = event.target.parentNode.parentNode.querySelectorAll(
+    '.five-days__weather-week-title-active',
+  );
+  allWeekdays.forEach(day => day.classList.remove('five-days__weather-week-title-active'));
+}
+
+// function colorizeMoreInfo(event) {
+//   const allButtons = event.target.parentNode.parentNode.querySelectorAll(
+//     '.class="five-days__weather-more-btn"',
+//   );
+//   allButtons.forEach(button => button.classList.remove('white-color'));
+// }
+
 export { hideMoreInfo };
-
-// fiveDaysWeatherWeekTitle.classList.remove('five-days__weather-week-title-active');
-
-// const fiveDaysWeatherWeekTitle = document.querySelector('five-days__weather-week-title');
-
-// function findParent(event){
-// if (fiveDaysWeatherWeekTitle.lastElementChild !== event.target) {
-//   fiveDaysWeatherWeekTitle.classList.remove('five-days__weather-week-title-active');
-// }}

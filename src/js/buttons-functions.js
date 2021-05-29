@@ -31,4 +31,4 @@ function goToFirstPage() {
 }
 
 export { goToFirstPage };
-// .five-days__chart
+
