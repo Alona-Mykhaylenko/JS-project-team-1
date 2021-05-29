@@ -6,7 +6,7 @@ const ulRef = document.querySelector('.five-days__weather-week-list');
 let newNewWeather = [];
 
 function dataFiveDays() {
-  fetchWeatherDataFiveDays().then(data => {
+  return fetchWeatherDataFiveDays().then(data => {
     const date2 = data.list.map(element => new Date(element.dt * 1000).getDate());
     const date5 = date2.filter((elem, index, arr) => arr.indexOf(elem) === index);
     const allDays = data.list;
@@ -35,7 +35,7 @@ function dataFiveDays() {
         };
       });
       ulRef.innerHTML = fivedays(newNewWeather);
-      console.log(newNewWeather);
+      return Promise.resolve(newNewWeather);
     });
   }
   

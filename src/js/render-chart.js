@@ -2,6 +2,7 @@ import Chart from 'chart.js/auto';
 import refs from '../js/refs';
 import { fetchWeatherDataFiveDays } from './api-service';
 import tempChart from '../templates/chart.hbs';
+import { dataFiveDays } from './render-five-day-forecast';
 
 const navListRef = document.querySelector('.nav-list');
 const ChartRef = document.querySelector('.chart-container');
@@ -39,79 +40,115 @@ navListRef.classList.remove('hidden');
   
 }
 
-let chartData = {};
+dataFiveDays().then(newNewWeather => {
+    console.log(newNewWeather);
+  const getChartData = newNewWeather.map(e => e.date);
+  const getChartTemp = newNewWeather.map(e => e.tempDay);
+  const getChartHumidity = newNewWeather.map(e => e.humidity);
+  const getChartPressure = newNewWeather.map(e => e.pressure);
+  const getChartWind = newNewWeather.map(e => e.wind);
 
-// const getChartData = () => {
-//   const data = api.dataProcessingMoreInfo();
-//   chartData.days = data.map(e => moment(e.date * 1000).format('ll'));
-//   chartData.temp = data.map(e => average('temp', e.forecast));
-//   chartData.humidity = data.map(e => average('humidity', e.forecast));
-//   chartData.pressure = data.map(e => average('pressure', e.forecast));
-//   chartData.speed = data.map(e => average('speed', e.forecast));
-// };
+   const chart = new Chart(ctx, {
+     type: 'line',
+     data: {
+       labels: getChartData,
+       datasets: [
+         {
+           label: ' — Temperature, C°',
+           backgroundColor: 'rgb(255, 107, 8)',
+           borderColor: 'rgb(255, 107, 8)',
+           data: getChartTemp,
+           fill: false,
+         },
+         {
+           label: ' —  Humidity, %',
+           backgroundColor: 'rgb(10, 6, 234)',
+           borderColor: 'rgb(10, 6, 234)',
+           data: getChartHumidity,
+           fill: false,
+         },
+         {
+           label: ' —  Wind Speed, m/s',
+           backgroundColor: 'rgb(235, 155, 5)',
+           borderColor: 'rgb(235, 155, 5)',
+           data: getChartPressure,
+           fill: false,
+         },
+         {
+           label: ' — Atmosphere Pressure, m/m',
+           backgroundColor: 'rgb(5, 120, 6)',
+           borderColor: 'rgb(5, 120, 6)',
+           data: getChartWind,
+           fill: false,
+         },
+       ],
+     },
+     options: {
+       interaction: {
+         mode: 'point',
+       },
+       // title: {
+       //   display: true,
+       //   text: 'Value of indicators',
+       //   position: 'left',
+       // },
+       // legend: {
+       //   display: true,
+       //   align: 'start',
 
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: [5, 6, 7, 2, 5],
-    datasets: [
-      {
-        label: ' — Temperature, C°',
-        backgroundColor: 'rgb(255, 107, 8)',
-        borderColor: 'rgb(255, 107, 8)',
-        data: [5, 6, 7, 2, 5],
-        fill: false,
-      },
-      {
-        label: ' —  Humidity, %',
-        backgroundColor: 'rgb(10, 6, 234)',
-        borderColor: 'rgb(10, 6, 234)',
-        data: [7, 4, 8, 3, 1],
-        fill: false,
-      },
-      {
-        label: ' —  Wind Speed, m/s',
-        backgroundColor: 'rgb(235, 155, 5)',
-        borderColor: 'rgb(235, 155, 5)',
-        data: [1, 4, 9, 3, 5],
-        fill: false,
-      },
-      {
-        label: ' — Atmosphere Pressure, m/m',
-        backgroundColor: 'rgb(5, 120, 6)',
-        borderColor: 'rgb(5, 120, 6)',
-        data: [4, 3, 8, 3, 5],
-        fill: false,
-      },
-    ],
-  },
-  options: {
-    interaction: {
-      mode: 'point',    
-    },
-    
-    scales: {
-      x: [
-        {
-          gridLines: {
-            color: 'rgba(255, 255, 255, 0.541)',
-          },
-          ticks: {
-            padding: 20,
-          },
-        },
-      ],
-      y: {      
-          grid: {
-          color: 'rgba(255, 255, 255, 0.541)',
-            
-            ticks: {
-            padding: 18,
-          },
-        },
-      },
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-  },
+       //   labels: {
+       //     boxWidth: 13,
+       //     boxHeight: 12,
+       //     defaultFontColor: 'rgb(5, 120, 6)',
+       //     padding: 10,
+       //   },
+       // },
+       scales: {
+         x: [
+           {
+             grid: {
+               color: 'rgba(255, 255, 255, 0.541)',
+             },
+             ticks: {
+               padding: 20,
+             },
+           },
+         ],
+         y: {
+           display: true,
+           title: {
+             display: true,
+             text: 'Value of indicators',
+             color: '#191',
+             font: {
+               family: 'Times',
+               size: 20,
+               style: 'normal',
+               lineHeight: 1.2,
+             },
+             padding: { top: 30, left: 0, right: 0, bottom: 0 },
+           },
+         },
+       },
+
+       responsive: true,
+       maintainAspectRatio: false,
+     },
+   });
+ 
 });
+
+// setDataChart: (chart, data) => {
+//   [...chart.data.datasets[0].data].forEach(() => chart.data.datasets[0].data.pop());
+//   [...chart.data.labels].forEach(() => chart.data.labels.pop());
+
+//   Object.entries(data).forEach(([index, item]) => {
+//     chart.data.datasets[0].data.push(item);
+//     chart.data.labels.push(index);
+//   });
+
+//   chart.update({
+//     duration: 1000,
+//     easing: 'easeOutBounce',
+//   });
+// };
