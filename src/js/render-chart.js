@@ -27,21 +27,24 @@ navListRef.addEventListener('click', onShowChartClick);
 navChartRef.addEventListener('click', onHideChartClick);
 
 function onShowChartClick(e) {
-  
-ChartRef.classList.remove('hidden');
-navListRef.classList.add('hidden');
- 
+  ChartRef.classList.remove('hidden');
+  navListRef.classList.add('hidden');
 }
 
 function onHideChartClick(e) {
-  
-ChartRef.classList.add('hidden');
-navListRef.classList.remove('hidden');
-  
+  ChartRef.classList.add('hidden');
+  navListRef.classList.remove('hidden');
 }
 
+// function setDataChart(chart, array) => {
+//   [...chart.data.datasets[0].data].forEach() => chart.data.datasets[0].data.pop());
+//   [...chart.data.labels].forEach(()=> chart.data.labels.pop());
+// }
+
 dataFiveDays().then(newNewWeather => {
-    console.log(newNewWeather);
+  console.log(newNewWeather);
+
+
   const getChartData = newNewWeather.map(e => e.date);
   const getChartTemp = newNewWeather.map(e => e.tempDay);
   const getChartHumidity = newNewWeather.map(e => e.humidity);
@@ -152,3 +155,4 @@ dataFiveDays().then(newNewWeather => {
 //     easing: 'easeOutBounce',
 //   });
 // };
+

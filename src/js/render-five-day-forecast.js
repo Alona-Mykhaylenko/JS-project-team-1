@@ -12,38 +12,39 @@ function dataFiveDays() {
     const allDays = data.list;
     let weatherFiveDays = date5.map(data =>
       allDays.filter(obj => new Date(obj.dt * 1000).getDate() === data),
-      );
-      if (weatherFiveDays.length > 5) {
-        weatherFiveDays = weatherFiveDays.slice(1);
-      }
-      
-      newNewWeather = weatherFiveDays.map(day => {
-        // console.log(humidity(day));
-        
-        return {
-          moreInfo: day,
-          // day: new Date(day[0].dt * 1000).getDate(),
-          week: weekDayNow(day[0].dt),
-          month: timeConverter(day[0].dt),
-          icon: `http://openweathermap.org/img/wn/${day[0].weather[0].icon}@2x.png`,
-          temp: mathTemp(day),
-          date: dayConv(day[0].dt),
-          wind: windTemp(day),
-          tempDay: everageTemp(day),
-          pressure: pressure(day),
-          humidity: humidity(day),
-        };
-      });
-      ulRef.innerHTML = fivedays(newNewWeather);
-      return Promise.resolve(newNewWeather);
+    );
+    if (weatherFiveDays.length > 5) {
+      weatherFiveDays = weatherFiveDays.slice(1);
+    }
+
+    newNewWeather = weatherFiveDays.map(day => {
+      // console.log(humidity(day));
+
+      return {
+        moreInfo: day,
+        // day: new Date(day[0].dt * 1000).getDate(),
+        week: weekDayNow(day[0].dt),
+        month: timeConverter(day[0].dt),
+        icon: `http://openweathermap.org/img/wn/${day[0].weather[0].icon}@2x.png`,
+        temp: mathTemp(day),
+        date: dayConv(day[0].dt),
+        wind: windTemp(day),
+        tempDay: everageTemp(day),
+        pressure: pressure(day),
+        humidity: humidity(day),
+      };
+
     });
-  }
-  
-  dataFiveDays();
-  
-  // =============день недели===================
-  
-  const weekDayNow = data => {
+    ulRef.innerHTML = fivedays(newNewWeather);
+    return Promise.resolve(newNewWeather);
+  });
+}
+
+dataFiveDays();
+
+// =============день недели===================
+
+const weekDayNow = data => {
   const date = new Date(data * 1000);
   const weekDay = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
   return weekDay;
@@ -125,4 +126,3 @@ const humidity = data => {
 
 export { dataFiveDays };
 export { newNewWeather };
-

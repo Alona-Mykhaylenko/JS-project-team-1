@@ -24,4 +24,11 @@ function onButtonClickOpen(event) {
   }
 }
 
-// .five-days__chart
+function goToFirstPage() {
+  if (oneDayDiv.classList.contains('hidden-section')) {
+    fivedayDiv.classList.add('hidden-section');
+    oneDayDiv.classList.remove('hidden-section');
+  }
+}
+
+export { goToFirstPage };
