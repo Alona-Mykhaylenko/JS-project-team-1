@@ -33,6 +33,7 @@ function dataFiveDays() {
         pressure: pressure(day),
         humidity: humidity(day),
       };
+
     });
     ulRef.innerHTML = fivedays(newNewWeather);
     return Promise.resolve(newNewWeather);
