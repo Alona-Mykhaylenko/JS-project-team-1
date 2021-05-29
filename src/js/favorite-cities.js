@@ -3,9 +3,9 @@ import { renderOneDayMarkup } from './render-one-day-forecast';
 import { dataFiveDays } from './render-five-day-forecast';
 import { hideMoreInfo } from './render-more-info';
 import { setLocationImg, setImgBg } from './geolocation';
+import { goToFirstPage } from './buttons-functions';
 
-const inputRef = document.querySelector('.search-city__input')
-
+const inputRef = document.querySelector('.search-city__input');
 
 const formInput = document.querySelector('.search-city__form');
 const fiveDaysHourListRef = document.querySelector('.five-days__hour-list');
@@ -17,7 +17,7 @@ function getCities(e) {
   const inputValue = inputRef.value;
   const normalizedLoc = inputValue.toLowerCase().trim();
   if (!normalizedLoc) return;
-  
+
   inputRef.value = '';
   setLocation(normalizedLoc);
   renderOneDayMarkup();
@@ -25,4 +25,5 @@ function getCities(e) {
   hideMoreInfo();
   setLocationImg(normalizedLoc);
   setImgBg();
+  goToFirstPage();
 }
