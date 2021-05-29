@@ -2,6 +2,7 @@ import favCitiesHbs from '../templates/fav-cities.hbs';
 import favCityHbs from '../templates/fav-city.hbs';
 import { renderOneDayMarkup } from './render-one-day-forecast';
 import { setLocation } from './api-service';
+import { setLocationImg, setImgBg } from './geolocation';
 import Siema from 'siema';
 
 const inputRef = document.querySelector('.search-city__input');
@@ -9,17 +10,10 @@ const btnRef = document.querySelector('.search-city__btn-save');
 const ulRef = document.querySelector('.search-city__slider-list');
 const btnLeft = document.querySelector('.search-city__slider-btnPrev');
 const btnRight = document.querySelector('.search-city__slider-btnNext');
-
 //==========================================ДОБАВЛЕНИЕ В LOCAL STORAGE====================================
 
-let widthVivport = document.querySelector('body').offsetWidth;
-const mySiema = new Siema({
-  selector: ulRef,
-  perPage: {
-    768: 2,
-    1024: 3,
-  },
-});
+// let widthVivport = document.querySelector('body').offsetWidth;
+
 
 btnLeft.addEventListener('click', () => mySiema.prev());
 btnRight.addEventListener('click', () => mySiema.next());
@@ -36,11 +30,13 @@ function addToLocalStorage() {
 
   localStorage.setItem('City', JSON.stringify(storage.arrCities));
   inputRef.value = '';
-  const li = document.createElement('li');
-  li.classList.add('search-city__slider-list-item');
-  li.innerHTML = favCityHbs(imputValue);
-  mySiema.append(li);
+  const div = document.createElement('div');
+  div.classList.add('search-city__slider-list-item');
+  div.innerHTML = favCityHbs(imputValue);
+  mySiema.append(div);
+  
   // createMarkup(getLocalStorage());
+  
 }
 
 function getLocalStorage() {
@@ -55,11 +51,16 @@ function getLocalStorage() {
 
   return parsedCities;
 }
-
+let mySiema;
 function createMarkup(cities) {
   const markup = favCitiesHbs(cities);
 
   ulRef.innerHTML = markup;
+  mySiema = new Siema({
+    selector: '.search-city__slider-list',
+    perPage: 3,
+    duration: 200,
+    });
 }
 
 createMarkup(getLocalStorage());
@@ -70,13 +71,18 @@ function addInputValueFromList(event) {
   if (event.target.nodeName === 'BUTTON') {
     const nameLiCity = event.path[1].childNodes[1].textContent;
     const indexCurrentCity = storage.arrCities.indexOf(nameLiCity);
-
+    
     storage.arrCities.splice(indexCurrentCity, 1);
     localStorage.setItem('City', JSON.stringify(storage.arrCities));
-    createMarkup(getLocalStorage());
-  }
-  if (event.target.nodeName === 'P') setLocation(event.path[1].childNodes[1].textContent);
-  renderOneDayMarkup();
-}
+    mySiema.remove(indexCurrentCity);
 
-//========================================== ОТОБРАЖЕНИЕ КНОПОК ЛЕВО-ПРАВО + СКРОЛЛ============================================================
+    
+    // createMarkup(getLocalStorage());
+  }
+  if (event.target.nodeName === 'P') { 
+    setLocation(event.path[1].childNodes[1].textContent);
+    renderOneDayMarkup(); 
+    setLocationImg(event.path[1].childNodes[1].textContent);
+    setImgBg();
+  }
+}
