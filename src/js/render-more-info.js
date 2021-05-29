@@ -36,18 +36,18 @@ function getHourlyData(event) {
 fiveDaysWeatherWeekRef.addEventListener('click', getHourlyData);
 
 const fiveDaysWeatherRef = document.querySelector('five-days__weather');
-fiveDaysWeatherRef.addEventListener('click', hideMoreInfo);
+// fiveDaysWeatherRef.addEventListener('click', hideMoreInfo);
 
-// // Спрятать подробную информацию
-function hideMoreInfo(event) {
-  if (
-    event.target.tagName === 'BUTTON' &&
-    fiveDaysHourListRef.children.length > 0 &&
-    fiveDaysHourListRef.firstElementChild.dataset.date === event.target.dataset.action
-  ) {
-    fiveDaysHourListRef.innerHTML = '';
-  }
-}
+// // // Спрятать подробную информацию
+// function hideMoreInfo(event) {
+//   if (
+//     event.target.tagName === 'BUTTON' &&
+//     fiveDaysHourListRef.children.length > 0 &&
+//     fiveDaysHourListRef.firstElementChild.dataset.date === event.target.dataset.action
+//   ) {
+//     fiveDaysHourListRef.innerHTML = '';
+//   }
+// }
 
 function renderHourlyData(chosenHourlyData) {
   console.log(chosenHourlyData);
