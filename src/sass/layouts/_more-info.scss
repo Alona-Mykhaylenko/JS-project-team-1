@@ -162,6 +162,32 @@
   .five-days__more-info-button-box {
     display: flex;
   }
+  .five-days__hour-list {
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .five-days-containeer__scroll {
+    display: flex;
+    justify-content: space-between;
+    height: 10px;
+    width: 58px;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+  .five-days__weather-week {
+    margin: 0 auto;
+    height: 240px;
+    padding: 30px 30px 0px;
+  }
+  .five-days__title {
+    display: none;
+  }
+  .five-days__btn-list {
+    padding-top: 71px;
+    padding-bottom: 35px;
+  }
 }
 
 @media (min-width: 768px) {
