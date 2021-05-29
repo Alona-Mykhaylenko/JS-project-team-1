@@ -124,7 +124,7 @@
 .five-days__hour-list {
   display: flex;
   overflow-x: auto;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   padding-bottom: 20px;
 
   // height: 240px;
@@ -142,8 +142,9 @@
   margin-bottom: 20px;
 }
 
-// five-days__weather-week-title-active
-// color: rgba(255, 255, 255, 0.302)
+.white-color {
+  color: var(--primary-text-color);
+}
 
 @media (min-width: 320px) {
   .five-days__hour-list::-webkit-scrollbar {

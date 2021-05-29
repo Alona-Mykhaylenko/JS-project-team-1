@@ -2,48 +2,51 @@ import fivedays from '../templates/weather-five-days.hbs';
 import { fetchWeatherDataFiveDays } from './api-service';
 
 const ulRef = document.querySelector('.five-days__weather-week-list');
+const fiveDaysDiv = document.querySelector('.five-days__weather-week');
 
 let newNewWeather = [];
 
 function dataFiveDays() {
-  fetchWeatherDataFiveDays().then(data => {
+  return fetchWeatherDataFiveDays().then(data => {
     const date2 = data.list.map(element => new Date(element.dt * 1000).getDate());
     const date5 = date2.filter((elem, index, arr) => arr.indexOf(elem) === index);
     const allDays = data.list;
     let weatherFiveDays = date5.map(data =>
       allDays.filter(obj => new Date(obj.dt * 1000).getDate() === data),
-      );
-      if (weatherFiveDays.length > 5) {
-        weatherFiveDays = weatherFiveDays.slice(1);
-      }
-      
-      newNewWeather = weatherFiveDays.map(day => {
-        // console.log(humidity(day));
-        
-        return {
-          moreInfo: day,
-          // day: new Date(day[0].dt * 1000).getDate(),
-          week: weekDayNow(day[0].dt),
-          month: timeConverter(day[0].dt),
-          icon: `http://openweathermap.org/img/wn/${day[0].weather[0].icon}@2x.png`,
-          temp: mathTemp(day),
-          date: dayConv(day[0].dt),
-          wind: windTemp(day),
-          tempDay: everageTemp(day),
-          pressure: pressure(day),
-          humidity: humidity(day),
-        };
-      });
-      ulRef.innerHTML = fivedays(newNewWeather);
-      console.log(newNewWeather);
+    );
+    if (weatherFiveDays.length > 5) {
+      weatherFiveDays = weatherFiveDays.slice(1);
+    }
+
+    newNewWeather = weatherFiveDays.map(day => {
+      // console.log(humidity(day));
+
+      return {
+        moreInfo: day,
+        // day: new Date(day[0].dt * 1000).getDate(),
+        week: weekDayNow(day[0].dt),
+        month: timeConverter(day[0].dt),
+        year: timeConverter2(day[0].dt),
+        icon: `http://openweathermap.org/img/wn/${day[0].weather[0].icon}@2x.png`,
+        temp: mathTemp(day),
+        date: dayConv(day[0].dt),
+        wind: windTemp(day),
+        tempDay: everageTemp(day),
+        pressure: pressure(day),
+        humidity: humidity(day),
+      };
     });
-  }
-  
-  dataFiveDays();
-  
-  // =============день недели===================
-  
-  const weekDayNow = data => {
+    // console.log(newNewWeather);
+    ulRef.innerHTML = fivedays(newNewWeather);
+    return Promise.resolve(newNewWeather);
+  });
+}
+
+dataFiveDays();
+
+// =============день недели===================
+
+const weekDayNow = data => {
   const date = new Date(data * 1000);
   const weekDay = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
   return weekDay;
@@ -70,6 +73,7 @@ const timeConverter = function (data) {
   const month = months[a.getMonth()];
   const date = a.getDate();
   const time = date + ' ' + month;
+  const year = a.getFullYear();
   return time;
 };
 
@@ -123,6 +127,59 @@ const humidity = data => {
   return resulHumid;
 };
 
+
+// =================== год ====================
+
+const timeConverter2 = function (data) {
+  const a = new Date(data * 1000);
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  const year = a.getFullYear();
+  return year;
+};
+
+// console.log(newNewWeather);
 export { dataFiveDays };
 export { newNewWeather };
 
+// ================== Стрелки скролл ===========================================
+
+fiveDaysDiv.addEventListener('click', fiveDayScroll);
+
+function fiveDayScroll(e) {
+  if (e.target.classList.contains('next')) {
+    scrollRightt();
+  } else if (e.target.classList.contains('prev')) {
+    scrollLeftt();
+  }
+}
+
+function scrollRightt(e) {
+  setTimeout(() => {
+    ulRef.scrollTo({
+      left: 1000,
+      behavior: 'smooth',
+    });
+  }, 500);
+}
+
+function scrollLeftt(e) {
+  setTimeout(() => {
+    ulRef.scrollTo({
+      left: -1000,
+      behavior: 'smooth',
+    });
+  }, 500);
+}

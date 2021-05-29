@@ -14,7 +14,6 @@ const btnRight = document.querySelector('.search-city__slider-btnNext');
 
 // let widthVivport = document.querySelector('body').offsetWidth;
 
-
 btnLeft.addEventListener('click', () => mySiema.prev());
 btnRight.addEventListener('click', () => mySiema.next());
 
@@ -34,10 +33,25 @@ function addToLocalStorage() {
   div.classList.add('search-city__slider-list-item');
   div.innerHTML = favCityHbs(imputValue);
   mySiema.append(div);
-  
+
   // createMarkup(getLocalStorage());
-  
 }
+
+btnRef.addEventListener('click', () => {
+  addToLocalStorage();
+
+  if (widthOfUserScreen < 768) {
+    if (storage.favoriteCities.length > 2) {
+      btnRight.hidden = false;
+    }
+  }
+
+  if (widthOfUserScreen > 768) {
+    if (storage.favoriteCities.length > 4) {
+      btnLeft.hidden = false;
+    }
+  }
+});
 
 function getLocalStorage() {
   const arrayOfCities = localStorage.getItem('City');
@@ -58,9 +72,17 @@ function createMarkup(cities) {
   ulRef.innerHTML = markup;
   mySiema = new Siema({
     selector: '.search-city__slider-list',
-    perPage: 3,
+    perPage: {
+      279: 2,
+      768: 4,
+      1119: 4,
+    },
     duration: 200,
-    });
+    draggable: false,
+    multipleDrag: false,
+    threshold: 20,
+    loop: false,
+  });
 }
 
 createMarkup(getLocalStorage());
@@ -71,18 +93,49 @@ function addInputValueFromList(event) {
   if (event.target.nodeName === 'BUTTON') {
     const nameLiCity = event.path[1].childNodes[1].textContent;
     const indexCurrentCity = storage.arrCities.indexOf(nameLiCity);
-    
+
     storage.arrCities.splice(indexCurrentCity, 1);
     localStorage.setItem('City', JSON.stringify(storage.arrCities));
     mySiema.remove(indexCurrentCity);
 
-    
-    // createMarkup(getLocalStorage());
+    createMarkup(getLocalStorage());
+
+    if (widthOfUserScreen < 768) {
+      if (storage.favoriteCities.length <= 2) {
+        btnRight.hidden = true;
+        btnLeft.hidden = true;
+      }
+    }
+
+    if (widthOfUserScreen > 768) {
+      if (storage.favoriteCities.length <= 4) {
+        btnRight.hidden = true;
+      }
+    }
   }
-  if (event.target.nodeName === 'P') { 
+  if (event.target.nodeName === 'P') {
     setLocation(event.path[1].childNodes[1].textContent);
-    renderOneDayMarkup(); 
+    renderOneDayMarkup();
     setLocationImg(event.path[1].childNodes[1].textContent);
     setImgBg();
   }
+}
+// =====================Скрытие каруссели===================
+
+btnLeft.addEventListener('click', () => {
+  mySiema.prev();
+  console.log(mySiema.prev());
+  if (mySiema.currentSlide === 0) {
+    btnLeft.hidden = true;
+  }
+});
+btnRight.addEventListener('click', () => {
+  mySiema.next();
+  if (mySiema.currentSlide > 0) {
+    btnLeft.hidden = false;
+  }
+});
+
+if (mySiema.currentSlide === 0) {
+  btnLeft.hidden = true;
 }
