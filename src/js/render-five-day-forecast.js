@@ -2,6 +2,7 @@ import fivedays from '../templates/weather-five-days.hbs';
 import { fetchWeatherDataFiveDays } from './api-service';
 
 const ulRef = document.querySelector('.five-days__weather-week-list');
+const fiveDaysDiv = document.querySelector('.five-days__weather-week');
 
 let newNewWeather = [];
 
@@ -34,7 +35,6 @@ function dataFiveDays() {
         pressure: pressure(day),
         humidity: humidity(day),
       };
-
     });
     // console.log(newNewWeather);
     ulRef.innerHTML = fivedays(newNewWeather);
@@ -153,3 +153,33 @@ const timeConverter2 = function (data) {
 // console.log(newNewWeather);
 export { dataFiveDays };
 export { newNewWeather };
+
+// ================== Стрелки скролл ===========================================
+
+fiveDaysDiv.addEventListener('click', fiveDayScroll);
+
+function fiveDayScroll(e) {
+  if (e.target.classList.contains('next')) {
+    scrollRightt();
+  } else if (e.target.classList.contains('prev')) {
+    scrollLeftt();
+  }
+}
+
+function scrollRightt(e) {
+  setTimeout(() => {
+    ulRef.scrollTo({
+      left: 1000,
+      behavior: 'smooth',
+    });
+  }, 500);
+}
+
+function scrollLeftt(e) {
+  setTimeout(() => {
+    ulRef.scrollTo({
+      left: -1000,
+      behavior: 'smooth',
+    });
+  }, 500);
+}

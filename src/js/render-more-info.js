@@ -14,19 +14,6 @@ function getHourlyData(event) {
   const dayInfo = newNewWeather.find(({ date }) => date === +day).moreInfo;
   console.log(newNewWeather);
 
-const fiveDaysWeatherRef = document.querySelector('five-days__weather');
-// fiveDaysWeatherRef.addEventListener('click', hideMoreInfo);
-
-// // // Спрятать подробную информацию
-// function hideMoreInfo(event) {
-//   if (
-//     event.target.tagName === 'BUTTON' &&
-//     fiveDaysHourListRef.children.length > 0 &&
-//     fiveDaysHourListRef.firstElementChild.dataset.date === event.target.dataset.action
-//   ) {
-//     fiveDaysHourListRef.innerHTML = '';
-//   }
-// }
   const chosenHourlyData = dayInfo.map(hourData => ({
     temp: Math.round(hourData.main.temp),
     pressure: hourData.main.pressure,
@@ -38,6 +25,7 @@ const fiveDaysWeatherRef = document.querySelector('five-days__weather');
   }));
   renderHourlyData(chosenHourlyData);
 }
+
 function renderHourlyData(chosenHourlyData) {
   console.log(chosenHourlyData);
   fiveDaysHourListRef.innerHTML = moreInfoTpl(chosenHourlyData);

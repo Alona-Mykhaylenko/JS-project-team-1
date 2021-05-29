@@ -122,3 +122,6 @@ function onHideChartClick(e) {
   navListRef.classList.remove('hidden');
   chart.destroy();
 }
+
+export { onHideChartClick };
+
