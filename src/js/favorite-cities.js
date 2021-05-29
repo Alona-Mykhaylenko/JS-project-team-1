@@ -3,6 +3,7 @@ import { renderOneDayMarkup } from './render-one-day-forecast';
 import { dataFiveDays } from './render-five-day-forecast';
 import { hideMoreInfo } from './render-more-info';
 import { setLocationImg, setImgBg } from './geolocation';
+import { goToFirstPage } from './buttons-functions';
 
 const inputRef = document.querySelector('.search-city__input')
 
@@ -25,4 +26,5 @@ function getCities(e) {
   hideMoreInfo();
   setLocationImg(normalizedLoc);
   setImgBg();
+  goToFirstPage();
 }

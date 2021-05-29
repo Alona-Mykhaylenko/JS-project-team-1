@@ -23,5 +23,12 @@ function onButtonClickOpen(event) {
     ChartRef.classList.add('hidden-section');
   }
 }
+function goToFirstPage() {
+  if (oneDayDiv.classList.contains('hidden-section')) {
+    fivedayDiv.classList.add('hidden-section');
+    oneDayDiv.classList.remove('hidden-section');
+  }
+}
 
+export { goToFirstPage };
 // .five-days__chart
