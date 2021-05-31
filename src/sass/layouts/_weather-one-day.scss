@@ -75,6 +75,11 @@
     margin-left: 10px;
     border: 1px solid #27384a;
     height: 35px;
+
+    @media (min-width: 768px) {
+      margin-right: 15px;
+      margin-left: 15px;
+    }
   }
 }
 
@@ -129,7 +134,7 @@
 
     &__wether {
       width: 450px;
-      height: 280px;
+      // height: 280px;
       margin-bottom: 0;
       border-bottom-right-radius: 0px;
       border-top-right-radius: 0px;
@@ -215,6 +220,7 @@
     position: absolute;
     top: 580px;
     right: 90px;
+    padding-bottom: 0;
   }
 }
 
@@ -298,8 +304,8 @@
   }
 
   .five-days__btn-list {
-    // position: absolute;
-    top: 5px;
+    position: absolute;
+    top: -68px;
     right: 0;
   }
 }

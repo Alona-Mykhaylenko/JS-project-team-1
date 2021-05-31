@@ -124,14 +124,16 @@
 .five-days__hour-list {
   display: flex;
   overflow-x: auto;
-  // margin-bottom: 30px;
-  padding-bottom: 20px;
 
-  // height: 240px;
+  // padding-bottom: 20px;
 }
 
 .five-days__hour-list-card:not(:last-child) {
   margin-right: 10px;
+}
+
+.five-days__hour-list-card {
+  padding-bottom: 30px;
 }
 
 .hide-button {
@@ -165,8 +167,8 @@
   .five-days__hour-list {
     display: flex;
     overflow-x: auto;
-    margin-bottom: 29px;
-    padding-bottom: 20px;
+    // margin-bottom: 29px;
+    // padding-bottom: 20px;
   }
   .five-days-containeer__scroll {
     display: flex;
@@ -178,8 +180,6 @@
   }
   .five-days__weather-week {
     margin: 0 auto;
-    height: 240px;
-    padding: 30px 30px 0px;
   }
   .five-days__title {
     display: none;
@@ -195,11 +195,7 @@
     display: block;
   }
   .five-days__box {
-    width: 580px;
-  }
-  .five-days__hour-list {
-    padding-bottom: 0;
-    margin-bottom: 30px;
+    width: 500px;
   }
 
   .five-days__hour-list::-webkit-scrollbar {
@@ -216,6 +212,7 @@
 
   .show-button {
     display: block;
+    margin-bottom: 30px;
   }
 
   .next {
@@ -241,10 +238,10 @@
     margin-right: auto;
   }
 
-  .five-days__weather {
-    padding-bottom: 30px;
-    margin-bottom: 21px;
-  }
+  // .five-days__weather {
+  //   padding-bottom: 30px;
+  //   margin-bottom: 21px;
+  // }
 }
 
 @media (min-width: 1280px) {
@@ -252,6 +249,6 @@
     display: none;
   }
   .five-days__box {
-    width: 900px;
+    width: 868px;
   }
 }

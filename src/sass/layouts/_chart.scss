@@ -55,9 +55,7 @@
   color: rgb(255, 107, 8);
   text-transform: capitalize;
   text-align: center;
-  @media screen and (min-width: 768px) {
-    font-size: 15px;
-  }
+  text-decoration-line: underline;
 }
 
 .chart-name:hover {
@@ -101,6 +99,7 @@
 .chart-wrapper {
   position: relative;
   margin: auto;
+  height: 60vh;
 
   @media screen and (min-width: 768px) {
     height: 340px;

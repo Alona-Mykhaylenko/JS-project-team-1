@@ -97,7 +97,7 @@ btnRef.addEventListener('click', () => {
     }
   }
 
-  if (widthOfUserScreen > 768) {
+  if (widthOfUserScreen >= 768) {
     if (storage.arrCities.length > 4) {
       btnRight.hidden = false;
     }
@@ -110,7 +110,7 @@ if (widthOfUserScreen < 768) {
   }
 }
 
-if (widthOfUserScreen > 768) {
+if (widthOfUserScreen >= 768) {
   if (storage.arrCities.length <= 4) {
     btnRight.hidden = true;
   }
@@ -136,7 +136,7 @@ function addInputValueFromList(event) {
       }
     }
 
-    if (widthOfUserScreen > 768) {
+    if (widthOfUserScreen >= 768) {
       if (storage.arrCities.length <= 4) {
         btnRight.hidden = true;
       }
@@ -156,7 +156,6 @@ function addInputValueFromList(event) {
       destroy();
       renderChartUpdate();
     }, 300);
-  
   }
 }
 // =====================Скрытие каруссели===================

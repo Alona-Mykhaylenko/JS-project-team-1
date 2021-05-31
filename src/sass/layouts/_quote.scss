@@ -12,6 +12,11 @@
   line-height: 17px;
   text-align: right;
   letter-spacing: 0.04em;
+
+  @media (min-width: 1280px) {
+    font-size: 22px;
+    line-height: 1.18;
+  }
 }
 
 .quote__author {
@@ -23,9 +28,9 @@
 }
 
 @media (min-width: 768px) {
-  .quote {
-    padding-right: 60px;
-  }
+  // .quote {
+  //   padding-right: 60px;
+  // }
   .quote__text {
     width: 375px;
     margin-bottom: 30px;
