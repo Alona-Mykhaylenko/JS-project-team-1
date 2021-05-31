@@ -56,10 +56,10 @@
   overflow-x: auto;
   font-size: 13px;
 
-  @media screen and (min-width: 768px) {
-    display: flex;
-    overflow-x: auto;
-  }
+  display: flex;
+  overflow-x: auto;
+
+  padding-bottom: 20px;
 
   .five-days__weather-week-item {
     list-style: none;
@@ -261,6 +261,10 @@
   .five-days__weather-more-btn {
     font-size: 14px;
   }
+
+  .hidden-arrow {
+    display: none;
+  }
 }
 
 // // DESKTOP
@@ -272,11 +276,15 @@
     padding: 40px 100px 0px;
   }
 
-  // .five-days__weather-week-title-city {
-  //   display: none;
-  // }
+  .five-days__weather-week-title-city {
+    display: none;
+  }
 
   .five-days-containeer__scroll {
+    display: none;
+  }
+
+  .hidden-arrow {
     display: none;
   }
 }

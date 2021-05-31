@@ -127,7 +127,6 @@ const humidity = data => {
   return resulHumid;
 };
 
-
 // =================== год ====================
 
 const timeConverter2 = function (data) {
@@ -150,18 +149,14 @@ const timeConverter2 = function (data) {
   return year;
 };
 
-// console.log(newNewWeather);
-export { dataFiveDays };
-export { newNewWeather };
-
 // ================== Стрелки скролл ===========================================
 
 fiveDaysDiv.addEventListener('click', fiveDayScroll);
 
 function fiveDayScroll(e) {
-  if (e.target.classList.contains('next')) {
+  if (e.target.classList.contains('right-arrow')) {
     scrollRightt();
-  } else if (e.target.classList.contains('prev')) {
+  } else if (e.target.classList.contains('left-arrow')) {
     scrollLeftt();
   }
 }
@@ -183,3 +178,7 @@ function scrollLeftt(e) {
     });
   }, 500);
 }
+
+// console.log(newNewWeather);
+export { dataFiveDays };
+export { newNewWeather };
