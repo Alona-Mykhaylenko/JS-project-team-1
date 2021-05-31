@@ -21,7 +21,7 @@ navChartRef.addEventListener('click', onHideChartClick);
 let chart = {};
 
 function renderChartUpdate() {
-  const getChartData = newNewWeather.map(e => e.date.month + ' ' + e.date.day + ', ' + e.date.year);
+  const getChartData = newNewWeather.map(e => e.month + ', ' + e.year);
   const getChartTemp = newNewWeather.map(e => e.tempDay);
   const getChartHumidity = newNewWeather.map(e => e.humidity);
   const getChartPressure = newNewWeather.map(e => e.pressure);
@@ -45,6 +45,7 @@ function renderChartUpdate() {
           borderColor: 'rgb(10, 6, 234)',
           data: getChartHumidity,
           fill: false,
+          hidden: true,
         },
         {
           label: ' —  Wind Speed, m/s',
@@ -52,6 +53,7 @@ function renderChartUpdate() {
           borderColor: 'rgb(235, 155, 5)',
           data: getChartPressure,
           fill: false,
+          hidden: true,
         },
         {
           label: ' — Atmosphere Pressure, m/m',
@@ -59,36 +61,52 @@ function renderChartUpdate() {
           borderColor: 'rgb(5, 120, 6)',
           data: getChartWind,
           fill: false,
+          hidden: true,
         },
       ],
     },
     options: {
-      interaction: {
-        mode: 'point',
-      },
-      // legend: {
-      //   display: true,
-      //   align: 'start',
+      plugins: {
+        legend: {
+          display: true,
+          align: 'start',
 
-      //   labels: {
-      //     boxWidth: 13,
-      //     boxHeight: 12,
-      //     defaultFontColor: 'rgb(5, 120, 6)',
-      //     padding: 10,
-      //   },
-      // },
-      scales: {
-        x: [
-          {
-            grid: {
-              color: 'rgba(255, 255, 255, 0.541)',
-            },
-            ticks: {
-              padding: 20,
-            },
+          labels: {
+            boxWidth: 13,
+            boxHeight: 12,
+            defaultFontColor: 'rgb(5, 120, 6)',
+            padding: 10,
           },
-        ],
+        },
+        interaction: {
+          mode: 'point',
+        },
+      },
+      animations: {
+        tension: {
+          duration: 1000,
+          easing: 'linear',
+          from: 1,
+          to: 0,
+          loop: true,
+        },
+      },
+      scales: {
+        x: {
+          grid: {
+            color: 'rgba(255, 255, 255, 0.3)',
+          },
+          ticks: {
+            color: 'white',
+          },
+        },
         y: {
+          grid: {
+            color: 'rgba(255, 255, 255, 0.3)',
+          },
+          ticks: {
+            color: 'white',
+          },
           display: true,
           title: {
             display: true,
@@ -104,7 +122,6 @@ function renderChartUpdate() {
           },
         },
       },
-
       responsive: true,
       maintainAspectRatio: false,
     },
