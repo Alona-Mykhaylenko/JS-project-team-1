@@ -195,15 +195,18 @@
 // // TABLET
 
 @media (min-width: 768px) and (max-width: 1279px) {
+  .hide-Kiev {
+    display: none;
+  }
   .five-days__weather-week {
     // width: 610px;
     // height: 260px;
     padding: 45px 35px 0px;
   }
 
-  .five-days__weather-week-title-city {
-    display: none;
-  }
+  // .five-days__weather-week-title-city {
+
+  // }
 
   .five-days-containeer__scroll {
     display: none;

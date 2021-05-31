@@ -165,8 +165,8 @@
   .five-days__hour-list {
     display: flex;
     overflow-x: auto;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    margin-bottom: 29px;
+    padding-bottom: 20px;
   }
   .five-days-containeer__scroll {
     display: flex;
@@ -191,6 +191,9 @@
 }
 
 @media (min-width: 768px) {
+  .five-days__title {
+    display: block;
+  }
   .five-days__box {
     width: 580px;
   }
@@ -245,6 +248,9 @@
 }
 
 @media (min-width: 1280px) {
+  .five-days__weather-week-title-city {
+    display: none;
+  }
   .five-days__box {
     width: 900px;
   }
