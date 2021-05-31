@@ -3,8 +3,9 @@ import favCityHbs from '../templates/fav-city.hbs';
 import { renderOneDayMarkup } from './render-one-day-forecast';
 import { setLocation } from './api-service';
 import { setLocationImg, setImgBg } from './geolocation';
-import { onHideChartClick } from './render-chart';
+import { onHideChartClick, destroy, renderChartUpdate } from './render-chart';
 import { goToFirstPage } from './buttons-functions';
+import { dataFiveDays } from './render-five-day-forecast';
 import Siema from 'siema';
 
 const inputRef = document.querySelector('.search-city__input');
@@ -145,8 +146,15 @@ function addInputValueFromList(event) {
     renderOneDayMarkup();
     setLocationImg(event.path[1].childNodes[1].textContent);
     setImgBg();
-    onHideChartClick();
-    goToFirstPage();
+
+    // onHideChartClick();
+    // goToFirstPage();
+    dataFiveDays();
+    setTimeout(() => {
+      destroy();
+      renderChartUpdate();
+    }, 100);
+  
   }
 }
 // =====================Скрытие каруссели===================
