@@ -32,7 +32,7 @@ function getCities(e) {
   setTimeout(() => {
     destroy();
     renderChartUpdate();
-  }, 100);
+  }, 300);
 
   randomQuote();
 }

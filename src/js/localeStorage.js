@@ -6,6 +6,7 @@ import { setLocationImg, setImgBg } from './geolocation';
 import { onHideChartClick, destroy, renderChartUpdate } from './render-chart';
 import { goToFirstPage } from './buttons-functions';
 import { dataFiveDays } from './render-five-day-forecast';
+import { randomQuote } from './quotes';
 import Siema from 'siema';
 
 const inputRef = document.querySelector('.search-city__input');
@@ -98,7 +99,7 @@ btnRef.addEventListener('click', () => {
 
   if (widthOfUserScreen > 768) {
     if (storage.arrCities.length > 4) {
-      btnLeft.hidden = false;
+      btnRight.hidden = false;
     }
   }
 });
@@ -150,10 +151,11 @@ function addInputValueFromList(event) {
     // onHideChartClick();
     // goToFirstPage();
     dataFiveDays();
+    randomQuote();
     setTimeout(() => {
       destroy();
       renderChartUpdate();
-    }, 100);
+    }, 300);
   
   }
 }
