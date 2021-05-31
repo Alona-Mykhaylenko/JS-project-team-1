@@ -3,6 +3,8 @@ import moreInfoTpl from '../templates/more-info.hbs';
 
 const fiveDaysHourListRef = document.querySelector('.five-days__hour-list');
 const fiveDaysWeatherWeekRef = document.querySelector('.five-days__weather-week');
+const fiveDaysBoxRef = document.querySelector('.five-days__box');
+const fiveDaysWeatherRef = document.querySelector('.five-days__weather');
 const buttonNext = document.querySelector('.next');
 const buttonPrev = document.querySelector('.prev');
 
@@ -48,9 +50,7 @@ function ConverterToHour(UNIX_timestamp) {
   return CurrentHour;
 }
 
-fiveDaysWeatherWeekRef.addEventListener('click', showOrHide);
-
-const fiveDaysWeatherRef = document.querySelector('.five-days__weather');
+fiveDaysWeatherRef.addEventListener('click', showOrHide);
 
 // ================ Показ или скрытие More Info ==========================
 function showOrHide(event) {
@@ -62,6 +62,7 @@ function showOrHide(event) {
     hideMoreInfo(event);
   } else if (event.target.tagName === 'BUTTON') {
     getHourlyData(event);
+    fiveDaysWeatherRef.classList.add('padding');
     buttonNext.classList.add('show-button');
     buttonNext.addEventListener('click', scrollRight);
     buttonPrev.addEventListener('click', scrollLeft);
@@ -74,14 +75,17 @@ function showOrHide(event) {
 
 function hideMoreInfo(event) {
   fiveDaysHourListRef.innerHTML = '';
+  buttonNext.classList.remove('show-button');
+  buttonPrev.classList.remove('show-button');
+  fiveDaysWeatherRef.classList.remove('padding');
 }
 
 function scrollRight() {
   // setTimeout(() => {
-    fiveDaysHourListRef.scrollTo({
-      left: 1000,
-      behavior: 'smooth',
-    });
+  fiveDaysHourListRef.scrollTo({
+    left: 1000,
+    behavior: 'smooth',
+  });
   // });
   buttonPrev.classList.add('show-button');
   buttonNext.classList.remove('show-button');
@@ -89,10 +93,10 @@ function scrollRight() {
 
 function scrollLeft() {
   // setTimeout(() => {
-    fiveDaysHourListRef.scrollTo({
-      left: -1000,
-      behavior: 'smooth',
-    });
+  fiveDaysHourListRef.scrollTo({
+    left: -1000,
+    behavior: 'smooth',
+  });
   // });
   buttonPrev.classList.remove('show-button');
   buttonNext.classList.add('show-button');
