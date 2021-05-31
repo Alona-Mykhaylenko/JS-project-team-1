@@ -1,3 +1,6 @@
+.five-days__weather-week-degrees {
+  font-size: 14px;
+}
 .five-days__weather {
   margin: 0 auto 28px;
   border-radius: 35px;
@@ -79,6 +82,7 @@
   }
 
   .five-days__weather-week-title {
+    opacity: 0.55;
     font-size: 12px;
     font-family: 'Lato';
     text-align: center !important;
@@ -90,7 +94,7 @@
   }
 
   .five-days__weather-week-date {
-    font-size: 13px;
+    font-size: 16px;
     font-family: 'Lato';
     color: #ffffff;
     text-align: center;
@@ -204,9 +208,9 @@
     padding: 45px 35px 0px;
   }
 
-  // .five-days__weather-week-title-city {
-
-  // }
+  .five-days__weather-week-title-city {
+    display: none;
+  }
 
   .five-days-containeer__scroll {
     display: none;
