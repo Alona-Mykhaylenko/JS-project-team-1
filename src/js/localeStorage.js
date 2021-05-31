@@ -65,6 +65,7 @@ function getLocalStorage() {
 
   return parsedCities;
 }
+
 let mySiema;
 function createMarkup(cities) {
   const markup = favCitiesHbs(cities);
