@@ -162,21 +162,21 @@ function fiveDayScroll(e) {
 }
 
 function scrollRightt(e) {
-  setTimeout(() => {
+  // setTimeout(() => {
     ulRef.scrollTo({
       left: 1000,
       behavior: 'smooth',
     });
-  }, 500);
+  // });
 }
 
 function scrollLeftt(e) {
-  setTimeout(() => {
+  // setTimeout(() => {
     ulRef.scrollTo({
       left: -1000,
       behavior: 'smooth',
-    });
-  }, 500);
+    // });
+  });
 }
 
 // console.log(newNewWeather);
