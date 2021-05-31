@@ -82,15 +82,15 @@ function renderChartUpdate() {
           mode: 'point',
         },
       },
-      animations: {
-        tension: {
-          duration: 1000,
-          easing: 'linear',
-          from: 1,
-          to: 0,
-          loop: true,
-        },
-      },
+      // animations: {
+      //   tension: {
+      //     duration: 1000,
+      //     easing: 'linear',
+      //     from: 1,
+      //     to: 0,
+      //     loop: true,
+      //   },
+      // },
       scales: {
         x: {
           grid: {
@@ -140,5 +140,9 @@ function onHideChartClick(e) {
   chart.destroy();
 }
 
-export { onHideChartClick };
+function destroy() {
+  chart.destroy();
+}
+
+export { onHideChartClick, destroy, renderChartUpdate };
 
