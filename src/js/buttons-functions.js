@@ -5,6 +5,7 @@ const fivedayDiv = document.querySelector('.five-days');
 const oneDayDiv = document.querySelector('.container-one-day');
 const todayButtonContainer = document.querySelector('.today__button');
 const ChartRef = document.querySelector('.chart-container');
+const searchCityRef = document.querySelector('.search-city');
 
 fivedayButtonContainer.addEventListener('click', hideFiveDaysSection);
 todayButtonContainer.addEventListener('click', onButtonClickOpen);
@@ -13,6 +14,7 @@ function hideFiveDaysSection(event) {
   if (event.target.classList.contains('five-days__btn-today')) {
     fivedayDiv.classList.add('hidden-section');
     oneDayDiv.classList.remove('hidden-section');
+    searchCityRef.classList.remove('big-margin');
   }
 }
 
@@ -21,6 +23,9 @@ function onButtonClickOpen(event) {
     fivedayDiv.classList.remove('hidden-section');
     oneDayDiv.classList.add('hidden-section');
     ChartRef.classList.add('hidden-section');
+    if (window.innerWidth >= 768) {
+      searchCityRef.classList.add('big-margin');
+    }
   }
 }
 function goToFirstPage() {
@@ -31,4 +36,3 @@ function goToFirstPage() {
 }
 
 export { goToFirstPage };
-

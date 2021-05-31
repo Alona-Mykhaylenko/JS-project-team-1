@@ -7,6 +7,7 @@ const fiveDaysBoxRef = document.querySelector('.five-days__box');
 const fiveDaysWeatherRef = document.querySelector('.five-days__weather');
 const buttonNext = document.querySelector('.next');
 const buttonPrev = document.querySelector('.prev');
+const searchCityRef = document.querySelector('.search-city');
 
 // =================== Получить массив данных из секции FiveDays,
 // создать из него новый массив только из нужных данных,
@@ -60,6 +61,9 @@ function showOrHide(event) {
     fiveDaysHourListRef.firstElementChild.dataset.date === event.target.dataset.action
   ) {
     hideMoreInfo(event);
+    if (window.innerWidth >= 768) {
+      searchCityRef.classList.add('big-margin');
+    }
   } else if (event.target.tagName === 'BUTTON') {
     getHourlyData(event);
     fiveDaysWeatherRef.classList.add('padding');
@@ -68,6 +72,7 @@ function showOrHide(event) {
     buttonPrev.addEventListener('click', scrollLeft);
     decolorizeWeekday(event);
     event.target.parentNode.firstElementChild.classList.add('five-days__weather-week-title-active');
+    searchCityRef.classList.remove('big-margin');
     // colorizeMoreInfo(event);
     // event.target.classList.add('white-color');
   }

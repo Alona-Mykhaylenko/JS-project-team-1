@@ -41,6 +41,7 @@
 @media screen and (min-width: 1280px) {
   .quote {
     height: 280px;
+    position: relative;
     // padding-top: 100px;
     // margin-right: -110px;
     margin-top: 5px;
@@ -50,4 +51,12 @@
     padding-left: 30px;
     padding-top: 73px;
   }
+  .date-container {
+    margin-bottom: 0;
+    bottom: -30px;
+  }
+  .container {
+    padding-bottom: 0;
+  }
 }
+

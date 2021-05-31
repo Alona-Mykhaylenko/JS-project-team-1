@@ -38,14 +38,14 @@ setImgBg();
 export { setImgBg, setLocationImg };
 
 //=====================================================ОПРЕДЕЛЕНИЕ ГЕОДАННЫХ=============================
-navigator.geolocation.getCurrentPosition(success, error)
-function error() {
-  setLocation();
-  renderOneDayMarkup();
-  dataFiveDays();
-  setLocationImg('Kiev');
-  setImgBg();
-}
+navigator.geolocation.getCurrentPosition(success)
+// function error() {
+//   setLocation();
+//   renderOneDayMarkup();
+//   dataFiveDays();
+//   setLocationImg('Kiev');
+//   setImgBg();
+// }
 
 function success(position) {
   const apikey = '993fb22893a947dbb2d0ca6e36241a91';

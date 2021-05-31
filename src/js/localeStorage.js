@@ -3,7 +3,7 @@ import favCityHbs from '../templates/fav-city.hbs';
 import { renderOneDayMarkup } from './render-one-day-forecast';
 import { setLocation } from './api-service';
 import { setLocationImg, setImgBg } from './geolocation';
-import { onHideChartClick, destroy, renderChartUpdate } from './render-chart';
+import { onHideChartClick, allDestroy, renderChartUpdate } from './render-chart';
 import { goToFirstPage } from './buttons-functions';
 import { dataFiveDays } from './render-five-day-forecast';
 import { randomQuote } from './quotes';
@@ -153,7 +153,7 @@ function addInputValueFromList(event) {
     dataFiveDays();
     randomQuote();
     setTimeout(() => {
-      destroy();
+      allDestroy();
       renderChartUpdate();
     }, 300);
   }
