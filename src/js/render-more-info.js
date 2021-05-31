@@ -77,23 +77,23 @@ function hideMoreInfo(event) {
 }
 
 function scrollRight() {
-  setTimeout(() => {
+  // setTimeout(() => {
     fiveDaysHourListRef.scrollTo({
       left: 1000,
       behavior: 'smooth',
     });
-  }, 500);
+  // });
   buttonPrev.classList.add('show-button');
   buttonNext.classList.remove('show-button');
 }
 
 function scrollLeft() {
-  setTimeout(() => {
+  // setTimeout(() => {
     fiveDaysHourListRef.scrollTo({
       left: -1000,
       behavior: 'smooth',
     });
-  }, 500);
+  // });
   buttonPrev.classList.remove('show-button');
   buttonNext.classList.add('show-button');
 }
