@@ -140,9 +140,9 @@ function onHideChartClick(e) {
   chart.destroy();
 }
 
-function destroy() {
+function allDestroy() {
   chart.destroy();
 }
 
-export { onHideChartClick, destroy, renderChartUpdate };
+export { onHideChartClick, allDestroy, renderChartUpdate };
 
