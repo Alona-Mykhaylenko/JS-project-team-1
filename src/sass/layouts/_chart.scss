@@ -22,7 +22,7 @@
   display: block;
   margin: 0 auto;
   max-width: 280px;
-  max-height: 516px;
+  // max-height: 516px;
   padding: 16px 26px;
   background-color: rgba(16, 33, 54, 0.8);
   box-shadow: 0px 8px 43px 0px rgba(16, 33, 54, 0.59);
@@ -101,7 +101,7 @@
 .chart-wrapper {
   position: relative;
   margin: auto;
- 
+
   @media screen and (min-width: 768px) {
     height: 340px;
   }
