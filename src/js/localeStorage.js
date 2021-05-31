@@ -3,6 +3,8 @@ import favCityHbs from '../templates/fav-city.hbs';
 import { renderOneDayMarkup } from './render-one-day-forecast';
 import { setLocation } from './api-service';
 import { setLocationImg, setImgBg } from './geolocation';
+import { onHideChartClick } from './render-chart';
+import { goToFirstPage } from './buttons-functions';
 import Siema from 'siema';
 
 const inputRef = document.querySelector('.search-city__input');
@@ -24,34 +26,29 @@ const storage = {
 };
 
 function addToLocalStorage() {
-  const imputValue = inputRef.value;
-  storage.arrCities.push(imputValue);
+  const city = inputRef.value;
+
+  if (!city) {
+    return;
+  }
+
+  if (storage.arrCities.includes(city)) {
+    return;
+  }
+
+  const inputValue = inputRef.value;
+  storage.arrCities.push(inputValue);
 
   localStorage.setItem('City', JSON.stringify(storage.arrCities));
+
   inputRef.value = '';
   const div = document.createElement('div');
   div.classList.add('search-city__slider-list-item');
-  div.innerHTML = favCityHbs(imputValue);
+  div.innerHTML = favCityHbs(inputValue);
   mySiema.append(div);
 
   // createMarkup(getLocalStorage());
 }
-
-btnRef.addEventListener('click', () => {
-  addToLocalStorage();
-
-  if (widthOfUserScreen < 768) {
-    if (storage.favoriteCities.length > 2) {
-      btnRight.hidden = false;
-    }
-  }
-
-  if (widthOfUserScreen > 768) {
-    if (storage.favoriteCities.length > 4) {
-      btnLeft.hidden = false;
-    }
-  }
-});
 
 function getLocalStorage() {
   const arrayOfCities = localStorage.getItem('City');
@@ -62,9 +59,9 @@ function getLocalStorage() {
 
   const parsedCities = JSON.parse(arrayOfCities);
   storage.arrCities = parsedCities;
-
   return parsedCities;
 }
+
 let mySiema;
 function createMarkup(cities) {
   const markup = favCitiesHbs(cities);
@@ -86,7 +83,37 @@ function createMarkup(cities) {
 }
 
 createMarkup(getLocalStorage());
+
+// =============Media screen===========
+const widthOfUserScreen = window.innerWidth;
 //===============================================КОПИРОВАНИЕ В РАЗМЕТКА И LOCAL STORAGE ===================================================================
+
+btnRef.addEventListener('click', () => {
+  if (widthOfUserScreen < 768) {
+    if (storage.arrCities.length > 2) {
+      btnRight.hidden = false;
+    }
+  }
+
+  if (widthOfUserScreen > 768) {
+    if (storage.arrCities.length > 4) {
+      btnLeft.hidden = false;
+    }
+  }
+});
+
+if (widthOfUserScreen < 768) {
+  if (storage.arrCities.length <= 2) {
+    btnRight.hidden = true;
+  }
+}
+
+if (widthOfUserScreen > 768) {
+  if (storage.arrCities.length <= 4) {
+    btnRight.hidden = true;
+  }
+}
+
 ulRef.addEventListener('click', addInputValueFromList);
 
 function addInputValueFromList(event) {
@@ -101,14 +128,14 @@ function addInputValueFromList(event) {
     createMarkup(getLocalStorage());
 
     if (widthOfUserScreen < 768) {
-      if (storage.favoriteCities.length <= 2) {
+      if (storage.arrCities.length <= 2) {
         btnRight.hidden = true;
         btnLeft.hidden = true;
       }
     }
 
     if (widthOfUserScreen > 768) {
-      if (storage.favoriteCities.length <= 4) {
+      if (storage.arrCities.length <= 4) {
         btnRight.hidden = true;
       }
     }
@@ -118,13 +145,14 @@ function addInputValueFromList(event) {
     renderOneDayMarkup();
     setLocationImg(event.path[1].childNodes[1].textContent);
     setImgBg();
+    onHideChartClick();
+    goToFirstPage();
   }
 }
 // =====================Скрытие каруссели===================
 
 btnLeft.addEventListener('click', () => {
   mySiema.prev();
-  console.log(mySiema.prev());
   if (mySiema.currentSlide === 0) {
     btnLeft.hidden = true;
   }
@@ -139,3 +167,8 @@ btnRight.addEventListener('click', () => {
 if (mySiema.currentSlide === 0) {
   btnLeft.hidden = true;
 }
+
+//=========Заглавная буква большая==========
+// function capitalizeFirstLetter(string) {
+//   return string.charAt(0).toUpperCase() + string.slice(1);
+// }
