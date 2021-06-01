@@ -22,7 +22,7 @@ const th = function (d) {
 };
 
 function initRender() {
-const { weekDayNow, dayNow, MonthNow, result } = time();
+  const { weekDayNow, dayNow, MonthNow, result } = time();
 
   dateRef.innerHTML = dateToday({
     sansetImg,
@@ -31,7 +31,7 @@ const { weekDayNow, dayNow, MonthNow, result } = time();
     time: result,
     date: dayNow,
     weekDay: weekDayNow,
-    th: th(),
+    th: th(), // передать аргумент dayNow
   });
 }
 initRender();
@@ -41,19 +41,18 @@ function renderDate() {
   const numberDateRef = document.querySelector('.date-day');
   const monthRef = document.querySelector('.date-month');
 
-    const { weekDayNow, dayNow, MonthNow, result } = time();
+  const { weekDayNow, dayNow, MonthNow, result } = time();
   currentTimeRef.textContent = result;
-
+  // рендерить и число, и месяц, и день недели
 }
-
 
 setInterval(renderDate, 1000);
 
 function pad(value) {
   return String(value).padStart(2, '0');
 }
-function time() { 
-   const date = new Date();
+function time() {
+  const date = new Date();
 
   const weekDayNow = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(date);
 
@@ -63,6 +62,6 @@ function time() {
 
   let result = pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
   return { weekDayNow, dayNow, MonthNow, result };
-};
+}
 
 //----------------------------------------------------
