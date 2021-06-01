@@ -25,12 +25,8 @@ function getCities(e) {
   renderOneDayMarkup();
   dataFiveDays();
   hideMoreInfo();
-  setLocationImg(normalizedLoc); // можно будет убрать
   setImgBg();
-  // goToFirstPage();
-  // onHideChartClick();
   setTimeout(() => {
-    // попробывать без таймера
     allDestroy();
     renderChartUpdate();
   }, 300);

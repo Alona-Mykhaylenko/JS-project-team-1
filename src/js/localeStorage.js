@@ -16,11 +16,6 @@ const btnLeft = document.querySelector('.search-city__slider-btnPrev');
 const btnRight = document.querySelector('.search-city__slider-btnNext');
 //==========================================ДОБАВЛЕНИЕ В LOCAL STORAGE====================================
 
-// let widthVivport = document.querySelector('body').offsetWidth;
-
-btnLeft.addEventListener('click', () => mySiema.prev()); // по-моему лишняя строка
-btnRight.addEventListener('click', () => mySiema.next()); // по-моему лишняя строка
-
 btnRef.addEventListener('click', addToLocalStorage);
 
 const storage = {
@@ -38,18 +33,16 @@ function addToLocalStorage() {
     return;
   }
 
-  const inputValue = inputRef.value; // дублирует строку 31
-  storage.arrCities.push(inputValue);
+  storage.arrCities.push(city);
 
   localStorage.setItem('City', JSON.stringify(storage.arrCities));
 
   inputRef.value = '';
   const div = document.createElement('div');
   div.classList.add('search-city__slider-list-item');
-  div.innerHTML = favCityHbs(inputValue);
+  div.innerHTML = favCityHbs(city);
   mySiema.append(div);
-
-  // createMarkup(getLocalStorage());
+  configWidthScreen();
 }
 
 function getLocalStorage() {
@@ -80,7 +73,6 @@ function createMarkup(cities) {
     draggable: false,
     multipleDrag: false,
     threshold: 20,
-    loop: false,
   });
 }
 
@@ -88,10 +80,9 @@ createMarkup(getLocalStorage());
 
 // =============Media screen===========
 const widthOfUserScreen = window.innerWidth;
-//===============================================КОПИРОВАНИЕ В РАЗМЕТКА И LOCAL STORAGE ===================================================================
+//=================КОПИРОВАНИЕ В РАЗМЕТКА И LOCAL STORAGE ===================================================================
 
-btnRef.addEventListener('click', () => {
-  // вынести в отдельную ф-цию и вызывать на 51 строке
+function configWidthScreen() {
   if (widthOfUserScreen < 768) {
     if (storage.arrCities.length > 2) {
       btnRight.hidden = false;
@@ -103,7 +94,7 @@ btnRef.addEventListener('click', () => {
       btnRight.hidden = false;
     }
   }
-});
+}
 
 if (widthOfUserScreen < 768) {
   if (storage.arrCities.length <= 2) {
@@ -128,7 +119,7 @@ function addInputValueFromList(event) {
     localStorage.setItem('City', JSON.stringify(storage.arrCities));
     mySiema.remove(indexCurrentCity);
 
-    createMarkup(getLocalStorage()); // проверить, нужна эта строчка
+    createMarkup(getLocalStorage());
 
     if (widthOfUserScreen < 768) {
       if (storage.arrCities.length <= 2) {
@@ -148,13 +139,9 @@ function addInputValueFromList(event) {
     renderOneDayMarkup();
     setLocationImg(event.path[1].childNodes[1].textContent); // по сути лишнее действие, локация есть в апи-сервисе
     setImgBg();
-
-    // onHideChartClick();
-    // goToFirstPage();
     dataFiveDays();
     randomQuote();
     setTimeout(() => {
-      // проверить работу без таймера
       allDestroy();
       renderChartUpdate();
     }, 300);
@@ -178,8 +165,3 @@ btnRight.addEventListener('click', () => {
 if (mySiema.currentSlide === 0) {
   btnLeft.hidden = true;
 }
-
-//=========Заглавная буква большая==========
-// function capitalizeFirstLetter(string) {
-//   return string.charAt(0).toUpperCase() + string.slice(1);
-// }
