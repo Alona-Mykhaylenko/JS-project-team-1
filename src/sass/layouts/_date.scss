@@ -31,6 +31,11 @@
   font-weight: 300;
   letter-spacing: 1px;
   color: #f7f7f7;
+
+  @media screen and (min-width: 320px) {
+    padding-left: 0;
+    text-align: center;
+  }
 }
 
 .date-month-time {
@@ -42,14 +47,18 @@
 
   @media screen and (min-width: 1280px) {
     margin-right: 0;
-    margin-left: 25px;
+    margin-left: 92px;
   }
 }
-.date-month,
-.date-time {
-  width: 130px;
-  margin: 0;
-}
+// .date-month,
+// .date-time {
+//   width: 130px;
+//   margin: 0;
+
+//   @media screen and (min-width: 320px) {
+//     width: 100%;
+//   }
+// }
 .date-month {
   text-align: right;
 }
@@ -70,10 +79,18 @@
   display: flex;
   width: 147px;
   height: 40px;
-  margin: 0 auto;
+  // margin: 0 auto;
   justify-content: center;
   padding-bottom: 16px;
   color: #ffffff;
+
+  @media screen and (min-width: 320px) {
+    margin-left: 52px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-left: 160px;
+  }
 }
 
 .date-sunrise,
@@ -150,7 +167,7 @@
   //     display: flex;
   //   }
   .date-sun {
-    margin-left: 0;
+    margin-left: 60px;
     padding-bottom: 20px;
     margin-top: 10px;
     margin-bottom: 30px;
