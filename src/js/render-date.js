@@ -31,7 +31,7 @@ function initRender() {
     time: result,
     date: dayNow,
     weekDay: weekDayNow,
-    th: th(), // передать аргумент dayNow
+    th: th(dayNow),
   });
 }
 initRender();
@@ -43,7 +43,6 @@ function renderDate() {
 
   const { weekDayNow, dayNow, MonthNow, result } = time();
   currentTimeRef.textContent = result;
-  // рендерить и число, и месяц, и день недели
 }
 
 setInterval(renderDate, 1000);
@@ -63,5 +62,3 @@ function time() {
   let result = pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
   return { weekDayNow, dayNow, MonthNow, result };
 }
-
-//----------------------------------------------------
