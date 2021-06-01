@@ -25,8 +25,8 @@ const fetchWeatherDataFiveDays = () =>
 
 //   Получение текущей локации после нажатия на Сабмит или Enter
 
-const setLocation = newLocation => {
+const setLocation = (newLocation = 'Kiev') => {
   location = newLocation;
 };
 
-export { fetchWeatherDataFiveDays, fetchWeatherDataOneDay, setLocation };
+export { fetchWeatherDataFiveDays, fetchWeatherDataOneDay, setLocation, location };
