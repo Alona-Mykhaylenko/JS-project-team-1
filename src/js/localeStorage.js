@@ -145,6 +145,7 @@ function addInputValueFromList(event) {
       allDestroy();
       renderChartUpdate();
     }, 300);
+
   }
 }
 // =====================Скрытие каруссели===================
