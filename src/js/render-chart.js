@@ -18,7 +18,7 @@ const headerOfShowChart = document.querySelector('.show-chart-header-js');
 navListRef.addEventListener('click', onShowChartClick);
 navChartRef.addEventListener('click', onHideChartClick);
 
-let chart = {};
+let chart = null;
 
 function renderChartUpdate() {
   const getChartData = newNewWeather.map(e => e.month + ', ' + e.year);
@@ -131,18 +131,18 @@ function renderChartUpdate() {
 function onShowChartClick(e) {
   ChartRef.classList.remove('hidden');
   navListRef.classList.add('hidden');
+  allDestroy();
   renderChartUpdate();
 }
 
 function onHideChartClick(e) {
   ChartRef.classList.add('hidden');
   navListRef.classList.remove('hidden');
-  chart.destroy();
 }
 
 function allDestroy() {
-  chart.destroy();
-}
-
+  if (chart) chart.destroy();
+ }
+ 
 export { onHideChartClick, allDestroy, renderChartUpdate };
 

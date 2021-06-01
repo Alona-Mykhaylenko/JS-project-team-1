@@ -147,15 +147,10 @@ function addInputValueFromList(event) {
     renderOneDayMarkup();
     setLocationImg(event.path[1].childNodes[1].textContent);
     setImgBg();
-
-    // onHideChartClick();
-    // goToFirstPage();
     dataFiveDays();
     randomQuote();
-    setTimeout(() => {
-      allDestroy();
-      renderChartUpdate();
-    }, 300);
+    allDestroy();
+    renderChartUpdate();
   }
 }
 // =====================Скрытие каруссели===================
