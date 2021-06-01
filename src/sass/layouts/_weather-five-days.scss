@@ -70,8 +70,6 @@
   display: flex;
   overflow-x: auto;
 
-  // padding-bottom: 20px;
-
   @media (min-width: 768px) and (max-width: 1280px) {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -79,7 +77,6 @@
 
   .five-days__weather-week-item {
     list-style: none;
-    // width: 55px;
 
     &:not(:last-child) {
       margin-right: 25px;
@@ -130,11 +127,9 @@
 
     @media screen and (min-width: 768px) {
       font-size: 18px;
-      // margin-bottom: 10px;
     }
     @media screen and (min-width: 1280px) {
       font-size: 25px;
-      // margin-bottom: 20px;
     }
   }
 
@@ -152,7 +147,6 @@
   .five-days__weather-week-temperature-block {
     display: flex;
     justify-content: center;
-    // width: 55px;
     margin-bottom: 14px;
   }
 
@@ -188,7 +182,6 @@
     vertical-align: top;
     margin: 0;
     padding: 0;
-    // height: auto;
 
     @media screen and (min-width: 768px) {
       font-size: 18px;
@@ -202,7 +195,6 @@
       display: inline-block;
       width: 5px;
       height: 5px;
-      //   background: url('./img/icons/elips.png');
       vertical-align: top;
     }
   }
