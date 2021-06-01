@@ -6,6 +6,7 @@ const fiveDaysWeatherRef = document.querySelector('.five-days__weather');
 const buttonNext = document.querySelector('.next');
 const buttonPrev = document.querySelector('.prev');
 const searchCityRef = document.querySelector('.search-city');
+const navListRef = document.querySelector('.nav-list');
 
 // =================== Получить массив данных из секции FiveDays,
 // создать из него новый массив только из нужных данных,
@@ -60,7 +61,7 @@ function showOrHide(event) {
   ) {
     hideMoreInfo(event);
     decolorizeWeekday(event);
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= 768 && !navListRef.classList.contains('hidden')) {
       searchCityRef.classList.add('big-margin');
     }
   } else if (event.target.tagName === 'BUTTON') {

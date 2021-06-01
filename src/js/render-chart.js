@@ -3,9 +3,11 @@ import tempChart from '../templates/chart.hbs';
 import { newNewWeather } from './render-five-day-forecast';
 
 const moment = require('moment-timezone');
-
+const searchCityRef = document.querySelector('.search-city');
 const navListRef = document.querySelector('.nav-list');
 const ChartRef = document.querySelector('.chart-container');
+const fiveDaysHourListRef = document.querySelector('.five-days__hour-list');
+const fiveDaysWeather = document.querySelector('.five-days__weather');
 
 ChartRef.innerHTML = tempChart();
 
@@ -122,15 +124,19 @@ function onShowChartClick(e) {
   navListRef.classList.add('hidden');
   allDestroy();
   renderChartUpdate();
+  searchCityRef.classList.remove('big-margin');
 }
 
 function onHideChartClick(e) {
   ChartRef.classList.add('hidden');
   navListRef.classList.remove('hidden');
+  if (fiveDaysWeather.querySelectorAll('.five-days__weather-hour').length === 0) {
+    searchCityRef.classList.add('big-margin');
+  }
 }
 
 function allDestroy() {
   if (chart) chart.destroy();
- }
- 
+}
+
 export { onHideChartClick, allDestroy, renderChartUpdate };
