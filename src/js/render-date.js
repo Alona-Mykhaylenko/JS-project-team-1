@@ -2,6 +2,7 @@ import dateToday from '../templates/date.hbs';
 import { fetchWeatherDataOneDay } from './api-service';
 import sansetImg from '../images/svg/sunset.svg';
 import sunriseImg from '../images/svg/sunrise.svg';
+import renderOneDayMarkup from './render-one-day-forecast'
 const dateRef = document.querySelector('.today__date');
 const numberDateRef = document.querySelector('.date-day');
 const monthRef = document.querySelector('.date-month');
@@ -36,21 +37,22 @@ function initRender() {
 }
 initRender();
 
-function renderDate() {
-  const currentTimeRef = document.querySelector('.date-time');
-  const numberDateRef = document.querySelector('.date-day');
-  const monthRef = document.querySelector('.date-month');
 
-  const { weekDayNow, dayNow, MonthNow, result } = time();
-  currentTimeRef.textContent = result;
-}
+// function renderDate() {
+//   const currentTimeRef = document.querySelector('.date-time');
+//   const numberDateRef = document.querySelector('.date-day');
+//   const monthRef = document.querySelector('.date-month');
 
-setInterval(renderDate, 1000);
+//   const { weekDayNow, dayNow, MonthNow, result } = time();
+//   // currentTimeRef.textContent = result;
+// }
+
+// setInterval(renderDate, 1000);
 
 function pad(value) {
   return String(value).padStart(2, '0');
 }
-function time() {
+function time(timeZone = new Date() ) {
   const date = new Date();
 
   const weekDayNow = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(date);
@@ -62,3 +64,4 @@ function time() {
   let result = pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
   return { weekDayNow, dayNow, MonthNow, result };
 }
+
