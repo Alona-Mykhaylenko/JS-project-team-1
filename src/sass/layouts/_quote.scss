@@ -43,6 +43,10 @@
     padding-right: 62px;
     padding-bottom: 0;
   }
+  @media (min-width: 1280px) {
+    padding-right: 0;
+    padding-bottom: 0;
+  }
 }
 
 @media (min-width: 768px) {

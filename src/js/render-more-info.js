@@ -2,8 +2,6 @@ import { newNewWeather } from './render-five-day-forecast';
 import moreInfoTpl from '../templates/more-info.hbs';
 
 const fiveDaysHourListRef = document.querySelector('.five-days__hour-list');
-const fiveDaysWeatherWeekRef = document.querySelector('.five-days__weather-week');
-const fiveDaysBoxRef = document.querySelector('.five-days__box');
 const fiveDaysWeatherRef = document.querySelector('.five-days__weather');
 const buttonNext = document.querySelector('.next');
 const buttonPrev = document.querySelector('.prev');
@@ -74,8 +72,6 @@ function showOrHide(event) {
     decolorizeWeekday(event);
     event.target.parentNode.firstElementChild.classList.add('five-days__weather-week-title-active');
     searchCityRef.classList.remove('big-margin');
-    // colorizeMoreInfo(event);
-    // event.target.classList.add('white-color');
   }
 }
 
@@ -87,23 +83,19 @@ function hideMoreInfo(event) {
 }
 
 function scrollRight() {
-  // setTimeout(() => {
   fiveDaysHourListRef.scrollTo({
     left: 1000,
     behavior: 'smooth',
   });
-  // });
   buttonPrev.classList.add('show-button');
   buttonNext.classList.remove('show-button');
 }
 
 function scrollLeft() {
-  // setTimeout(() => {
   fiveDaysHourListRef.scrollTo({
     left: -1000,
     behavior: 'smooth',
   });
-  // });
   buttonPrev.classList.remove('show-button');
   buttonNext.classList.add('show-button');
 }
@@ -121,12 +113,5 @@ function decolorizeWeekdayOnButtonClick(event) {
   );
   weekdays.forEach(day => day.classList.remove('five-days__weather-week-title-active'));
 }
-
-// function colorizeMoreInfo(event) {
-//   const allButtons = event.target.parentNode.parentNode.querySelectorAll(
-//     '.class="five-days__weather-more-btn"',
-//   );
-//   allButtons.forEach(button => button.classList.remove('white-color'));
-// }
 
 export { hideMoreInfo, decolorizeWeekdayOnButtonClick };
