@@ -1,3 +1,5 @@
+import { hideMoreInfo, decolorizeWeekdayOnButtonClick } from './render-more-info';
+
 // / ================BUTTONS ONE DAY/FIVE DAYS=============
 
 const fivedayButtonContainer = document.querySelector('.five-days__btn-container');
@@ -15,6 +17,8 @@ function hideFiveDaysSection(event) {
     fivedayDiv.classList.add('hidden-section');
     oneDayDiv.classList.remove('hidden-section');
     searchCityRef.classList.remove('big-margin');
+    hideMoreInfo(event);
+    decolorizeWeekdayOnButtonClick(event);
   }
 }
 

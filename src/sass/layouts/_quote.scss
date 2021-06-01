@@ -13,9 +13,16 @@
   text-align: right;
   letter-spacing: 0.04em;
 
+  @media (min-width: 768px) {
+    font-size: 22px;
+    line-height: 1.18;
+    margin-right: 62px;
+  }
+
   @media (min-width: 1280px) {
     font-size: 22px;
     line-height: 1.18;
+    margin-right: 0;
   }
 }
 
@@ -23,8 +30,19 @@
   font-size: 18px;
   text-align: right;
   letter-spacing: 0.04em;
+
   padding-bottom: 67px;
   color: #ffffff;
+
+  @media (min-width: 320px) {
+    font-size: 16px;
+    padding-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    padding-right: 62px;
+    padding-bottom: 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -59,4 +77,3 @@
     padding-bottom: 0;
   }
 }
-

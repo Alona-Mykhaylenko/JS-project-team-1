@@ -18,8 +18,8 @@ const btnRight = document.querySelector('.search-city__slider-btnNext');
 
 // let widthVivport = document.querySelector('body').offsetWidth;
 
-btnLeft.addEventListener('click', () => mySiema.prev());
-btnRight.addEventListener('click', () => mySiema.next());
+btnLeft.addEventListener('click', () => mySiema.prev()); // по-моему лишняя строка
+btnRight.addEventListener('click', () => mySiema.next()); // по-моему лишняя строка
 
 btnRef.addEventListener('click', addToLocalStorage);
 
@@ -38,7 +38,7 @@ function addToLocalStorage() {
     return;
   }
 
-  const inputValue = inputRef.value;
+  const inputValue = inputRef.value; // дублирует строку 31
   storage.arrCities.push(inputValue);
 
   localStorage.setItem('City', JSON.stringify(storage.arrCities));
@@ -91,6 +91,7 @@ const widthOfUserScreen = window.innerWidth;
 //===============================================КОПИРОВАНИЕ В РАЗМЕТКА И LOCAL STORAGE ===================================================================
 
 btnRef.addEventListener('click', () => {
+  // вынести в отдельную ф-цию и вызывать на 51 строке
   if (widthOfUserScreen < 768) {
     if (storage.arrCities.length > 2) {
       btnRight.hidden = false;
@@ -127,7 +128,7 @@ function addInputValueFromList(event) {
     localStorage.setItem('City', JSON.stringify(storage.arrCities));
     mySiema.remove(indexCurrentCity);
 
-    createMarkup(getLocalStorage());
+    createMarkup(getLocalStorage()); // проверить, нужна эта строчка
 
     if (widthOfUserScreen < 768) {
       if (storage.arrCities.length <= 2) {
@@ -145,12 +146,13 @@ function addInputValueFromList(event) {
   if (event.target.nodeName === 'P') {
     setLocation(event.path[1].childNodes[1].textContent);
     renderOneDayMarkup();
-    setLocationImg(event.path[1].childNodes[1].textContent);
+    setLocationImg(event.path[1].childNodes[1].textContent); // по сути лишнее действие, локация есть в апи-сервисе
     setImgBg();
     dataFiveDays();
     randomQuote();
     allDestroy();
     renderChartUpdate();
+
   }
 }
 // =====================Скрытие каруссели===================
