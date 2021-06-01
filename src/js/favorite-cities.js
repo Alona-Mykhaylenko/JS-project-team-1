@@ -25,11 +25,11 @@ function getCities(e) {
   renderOneDayMarkup();
   dataFiveDays();
   hideMoreInfo();
-  setLocationImg(normalizedLoc); // можно будет убрать
   setImgBg();
-
-  allDestroy();
-  renderChartUpdate();
+  setTimeout(() => {
+    allDestroy();
+    renderChartUpdate();
+  }, 300);
 
   randomQuote();
 }
