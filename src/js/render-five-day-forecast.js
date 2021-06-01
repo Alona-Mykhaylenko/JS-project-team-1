@@ -19,11 +19,9 @@ function dataFiveDays() {
     }
 
     newNewWeather = weatherFiveDays.map(day => {
-      // console.log(humidity(day));
 
       return {
         moreInfo: day,
-        // day: new Date(day[0].dt * 1000).getDate(),
         week: weekDayNow(day[0].dt),
         month: timeConverter(day[0].dt),
         year: timeConverter2(day[0].dt),
@@ -36,7 +34,6 @@ function dataFiveDays() {
         humidity: humidity(day),
       };
     });
-    // console.log(newNewWeather);
     ulRef.innerHTML = fivedays(newNewWeather);
     return Promise.resolve(newNewWeather);
   });
@@ -44,17 +41,16 @@ function dataFiveDays() {
 
 dataFiveDays();
 
-// =============день недели===================
+// ==========================================день недели===================================================
 
 const weekDayNow = data => {
   const date = new Date(data * 1000);
   const weekDay = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
   return weekDay;
 };
+// =========================================== дата месяц =================================================
 
-// =================== дата месяц ====================
-
-const timeConverter = function (data) {
+const timeConverter = data => {
   const a = new Date(data * 1000);
   const months = [
     'Jan',
@@ -73,18 +69,9 @@ const timeConverter = function (data) {
   const month = months[a.getMonth()];
   const date = a.getDate();
   const time = date + ' ' + month;
-  const year = a.getFullYear(); // по ходу, лишняя строка
   return time;
 };
-
-// =========================================день число==================================
-const dayConv = function (data) {
-  const a = new Date(data * 1000);
-  const date = a.getDate();
-  return date;
-};
-
-// ============================================средняя температура min/max дня=======================
+// ============================================средняя температура min/max дня================================
 
 const mathTemp = data => {
   data = data.map(e => Math.floor(e.main.temp_min));
@@ -94,68 +81,49 @@ const mathTemp = data => {
   };
   return temp;
 };
+// ===================================================глобальная формула вычисления даты=======================
 
-// ================================================скорость ветра==================================
-
-// const getAverage =(data, keyBase, key) => {
-//   const total = data.map(e => Math.floor(e[keyBase][key])).reduce((a, b) => a + b, 0);
-//   const result = Math.floor(+total / data.length);
-//   return result;
-// };
-// getAverage =(data, "wind", "speed")
-const windTemp = data => {
-  const wind = data.map(e => Math.floor(e.wind.speed)).reduce((a, b) => a + b, 0);
-  const resultWind = Math.floor(+wind / data.length);
-  return resultWind;
+const getAverageDate = (data, keyBase) => {
+  const total = new Date(data * 1000);
+  const result = total[keyBase]();
+  return result;
 };
 
-// ============================================средняя температура дня=======================
+// =========================================день число===========================================================
 
-const everageTemp = data => {
-  const temp = data.map(e => Math.floor(e.main.temp)).reduce((a, b) => a + b, 0);
-  const resulTemp = Math.floor(+temp / data.length);
-  return resulTemp;
+const dayConv = data => getAverageDate(data, 'getDate');
+
+// =================================================== год ======================================================
+
+const timeConverter2 = data => getAverageDate(data, 'getFullYear');
+
+
+
+// ===================================================глобальная формула по средним значениям=====================
+const getAverage = (data, keyBase, key) => {
+  const total = data.map(e => Math.floor(e[keyBase][key])).reduce((a, b) => a + b, 0);
+  const result = Math.floor(+total / data.length);
+  return result;
 };
 
-// ============================================среднее давление дня=======================
+// ================================================скорость ветра=================================================
 
-const pressure = data => {
-  const press = data.map(e => Math.floor(e.main.pressure)).reduce((a, b) => a + b, 0);
-  const resulPress = Math.floor(+press / data.length);
-  return resulPress;
-};
+const windTemp = data => getAverage(data, 'wind', 'speed');
 
-// ============================================средняя влажность дня=======================
+// ============================================средняя температура дня============================================
 
-const humidity = data => {
-  const humid = data.map(e => Math.floor(e.main.humidity)).reduce((a, b) => a + b, 0);
-  const resulHumid = Math.floor(+humid / data.length);
-  return resulHumid;
-};
+const everageTemp = data => getAverage(data, 'main', 'temp');
 
-// =================== год ====================
+// ============================================среднее давление дня===============================================
 
-const timeConverter2 = function (data) {
-  const a = new Date(data * 1000);
-  const months = [ // этот массив убрать
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  const year = a.getFullYear();
-  return year;
-};
+const pressure = data => getAverage(data, 'main', 'pressure');
 
-// ================== Стрелки скролл ===========================================
+// ============================================средняя влажность дня==============================================
+
+const humidity = data => getAverage(data, 'main', 'humidity');
+
+
+// ============================================ Стрелки скролл ===================================================
 
 fiveDaysDiv.addEventListener('click', fiveDayScroll);
 
@@ -168,23 +136,18 @@ function fiveDayScroll(e) {
 }
 
 function scrollRightt(e) {
-  // setTimeout(() => {
     ulRef.scrollTo({
       left: 1000,
       behavior: 'smooth',
     });
-  // });
 }
 
 function scrollLeftt(e) {
-  // setTimeout(() => {
     ulRef.scrollTo({
       left: -1000,
       behavior: 'smooth',
-    // });
   });
 }
 
-// console.log(newNewWeather);
 export { dataFiveDays };
 export { newNewWeather };
