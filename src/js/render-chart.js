@@ -13,8 +13,6 @@ const navChartRef = document.querySelector('.nav');
 
 const ctx = document.getElementById('myChart').getContext('2d');
 
-const headerOfShowChart = document.querySelector('.show-chart-header-js'); // скорее всего, убрать эту строку
-
 navListRef.addEventListener('click', onShowChartClick);
 navChartRef.addEventListener('click', onHideChartClick);
 
@@ -82,15 +80,6 @@ function renderChartUpdate() {
           mode: 'point',
         },
       },
-      // animations: {
-      //   tension: {
-      //     duration: 1000,
-      //     easing: 'linear',
-      //     from: 1,
-      //     to: 0,
-      //     loop: true,
-      //   },
-      // },
       scales: {
         x: {
           grid: {
