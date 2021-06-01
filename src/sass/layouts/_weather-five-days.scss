@@ -85,6 +85,9 @@
         margin-right: 20px;
       }
     }
+    @media (min-width: 1280px) {
+      margin-left: -55px;
+    }
   }
 
   .five-days__weather-week-title-city {

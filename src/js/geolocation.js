@@ -1,9 +1,6 @@
 import { setLocation, location } from './api-service';
 import { renderOneDayMarkup } from './render-one-day-forecast';
 import { dataFiveDays } from './render-five-day-forecast';
-// import { setLocationImg, setImgBg } from './geolocation';
-
-
 
 const bodyRef = document.querySelector('body');
 

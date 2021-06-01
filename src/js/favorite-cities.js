@@ -3,14 +3,12 @@ import { renderOneDayMarkup } from './render-one-day-forecast';
 import { dataFiveDays } from './render-five-day-forecast';
 import { hideMoreInfo } from './render-more-info';
 import { setLocationImg, setImgBg } from './geolocation';
-import { goToFirstPage } from './buttons-functions'; // убрать неиспользуемое
-import { onHideChartClick, allDestroy, renderChartUpdate } from './render-chart';
+import { allDestroy, renderChartUpdate } from './render-chart';
 import { randomQuote } from './quotes';
 
 const inputRef = document.querySelector('.search-city__input');
 
 const formInput = document.querySelector('.search-city__form');
-const fiveDaysHourListRef = document.querySelector('.five-days__hour-list');
 
 formInput.addEventListener('submit', getCities);
 
@@ -25,12 +23,11 @@ function getCities(e) {
   renderOneDayMarkup();
   dataFiveDays();
   hideMoreInfo();
+  setLocationImg(normalizedLoc);
   setImgBg();
-  onHideChartClick();
   setTimeout(() => {
     allDestroy();
     renderChartUpdate();
   }, 300);
-
   randomQuote();
 }
