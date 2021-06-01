@@ -61,6 +61,7 @@ function showOrHide(event) {
     fiveDaysHourListRef.firstElementChild.dataset.date === event.target.dataset.action
   ) {
     hideMoreInfo(event);
+    decolorizeWeekday(event);
     if (window.innerWidth >= 768) {
       searchCityRef.classList.add('big-margin');
     }
@@ -114,6 +115,13 @@ function decolorizeWeekday(event) {
   allWeekdays.forEach(day => day.classList.remove('five-days__weather-week-title-active'));
 }
 
+function decolorizeWeekdayOnButtonClick(event) {
+  const weekdays = event.target.parentNode.parentNode.parentNode.parentNode.querySelectorAll(
+    '.five-days__weather-week-title-active',
+  );
+  weekdays.forEach(day => day.classList.remove('five-days__weather-week-title-active'));
+}
+
 // function colorizeMoreInfo(event) {
 //   const allButtons = event.target.parentNode.parentNode.querySelectorAll(
 //     '.class="five-days__weather-more-btn"',
@@ -121,4 +129,4 @@ function decolorizeWeekday(event) {
 //   allButtons.forEach(button => button.classList.remove('white-color'));
 // }
 
-export { hideMoreInfo };
+export { hideMoreInfo, decolorizeWeekdayOnButtonClick };

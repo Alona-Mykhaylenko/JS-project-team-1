@@ -3,7 +3,7 @@ import { renderOneDayMarkup } from './render-one-day-forecast';
 import { dataFiveDays } from './render-five-day-forecast';
 import { hideMoreInfo } from './render-more-info';
 import { setLocationImg, setImgBg } from './geolocation';
-import { goToFirstPage } from './buttons-functions';
+import { goToFirstPage } from './buttons-functions'; // убрать неиспользуемое
 import { onHideChartClick, allDestroy, renderChartUpdate } from './render-chart';
 import { randomQuote } from './quotes';
 
@@ -25,11 +25,12 @@ function getCities(e) {
   renderOneDayMarkup();
   dataFiveDays();
   hideMoreInfo();
-  setLocationImg(normalizedLoc);
+  setLocationImg(normalizedLoc); // можно будет убрать
   setImgBg();
   // goToFirstPage();
   // onHideChartClick();
   setTimeout(() => {
+    // попробывать без таймера
     allDestroy();
     renderChartUpdate();
   }, 300);

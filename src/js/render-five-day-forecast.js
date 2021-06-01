@@ -73,7 +73,7 @@ const timeConverter = function (data) {
   const month = months[a.getMonth()];
   const date = a.getDate();
   const time = date + ' ' + month;
-  const year = a.getFullYear();
+  const year = a.getFullYear(); // по ходу, лишняя строка
   return time;
 };
 
@@ -97,6 +97,12 @@ const mathTemp = data => {
 
 // ================================================скорость ветра==================================
 
+// const getAverage =(data, keyBase, key) => {
+//   const total = data.map(e => Math.floor(e[keyBase][key])).reduce((a, b) => a + b, 0);
+//   const result = Math.floor(+total / data.length);
+//   return result;
+// };
+// getAverage =(data, "wind", "speed")
 const windTemp = data => {
   const wind = data.map(e => Math.floor(e.wind.speed)).reduce((a, b) => a + b, 0);
   const resultWind = Math.floor(+wind / data.length);
@@ -131,7 +137,7 @@ const humidity = data => {
 
 const timeConverter2 = function (data) {
   const a = new Date(data * 1000);
-  const months = [
+  const months = [ // этот массив убрать
     'Jan',
     'Feb',
     'Mar',
