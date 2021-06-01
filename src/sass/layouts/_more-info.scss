@@ -66,7 +66,7 @@
   background-size: cover;
 
   position: absolute;
-  top: 60%;
+  top: 62%;
   left: 10%;
 }
 
@@ -82,7 +82,7 @@
   background-size: cover;
 
   position: absolute;
-  top: 72%;
+  top: 73%;
   left: 10%;
 }
 
@@ -190,7 +190,10 @@
   }
   .five-days__btn-list {
     padding-top: 71px;
-    padding-bottom: 35px;
+
+    @media (min-width: 320px) {
+      padding-bottom: 30px;
+    }
   }
 }
 
@@ -199,7 +202,7 @@
     display: block;
   }
   .five-days__box {
-    width: 500px;
+    width: 498px;
   }
 
   .five-days__hour-list::-webkit-scrollbar {

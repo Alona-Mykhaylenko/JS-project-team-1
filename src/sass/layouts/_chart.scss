@@ -56,6 +56,10 @@
   text-transform: capitalize;
   text-align: center;
   text-decoration-line: underline;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
 }
 
 .chart-name:hover {
