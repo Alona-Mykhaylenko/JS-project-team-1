@@ -27,13 +27,9 @@ function getCities(e) {
   hideMoreInfo();
   setLocationImg(normalizedLoc); // можно будет убрать
   setImgBg();
-  // goToFirstPage();
-  // onHideChartClick();
-  setTimeout(() => {
-    // попробывать без таймера
-    allDestroy();
-    renderChartUpdate();
-  }, 300);
+
+  allDestroy();
+  renderChartUpdate();
 
   randomQuote();
 }

@@ -148,16 +148,11 @@ function addInputValueFromList(event) {
     renderOneDayMarkup();
     setLocationImg(event.path[1].childNodes[1].textContent); // по сути лишнее действие, локация есть в апи-сервисе
     setImgBg();
-
-    // onHideChartClick();
-    // goToFirstPage();
     dataFiveDays();
     randomQuote();
-    setTimeout(() => {
-      // проверить работу без таймера
-      allDestroy();
-      renderChartUpdate();
-    }, 300);
+    allDestroy();
+    renderChartUpdate();
+
   }
 }
 // =====================Скрытие каруссели===================
