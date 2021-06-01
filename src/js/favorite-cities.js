@@ -26,6 +26,7 @@ function getCities(e) {
   dataFiveDays();
   hideMoreInfo();
   setImgBg();
+  onHideChartClick();
   setTimeout(() => {
     allDestroy();
     renderChartUpdate();
