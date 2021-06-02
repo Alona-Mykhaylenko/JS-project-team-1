@@ -1,4 +1,4 @@
-const MainURL = 'http://api.openweathermap.org/data/2.5/';
+const MainURL = 'https://api.openweathermap.org/data/2.5/';
 const apiKey = 'b97bd7991b77ef6d55cfd7dd50b01e99';
 
 let location = 'Kiev';
